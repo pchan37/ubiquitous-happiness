@@ -3,6 +3,6 @@ Lost &amp; Found
 
 <hr>
 
-<p style="font-size: 48px">look at this happy corg after he was found.</p>
+think this project isnt important? well look at this happy corg after he was found using our project
 
 ![corgo](https://s3.amazonaws.com/cms-uploads.adoptapet.com/e/4/d/5.png)
