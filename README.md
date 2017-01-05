@@ -7,9 +7,11 @@ Our project attempts to make it easier for people to find their lost pets that o
 
 <hr>
 
+<div style="text-align: center">
 think this project isnt important? well look at this happy corg after he was found using our project
 
-![corgo](https://s3.amazonaws.com/cms-uploads.adoptapet.com/e/4/d/5.png)
+<img src="https://s3.amazonaws.com/cms-uploads.adoptapet.com/e/4/d/5.png" alt="corgo" />
+</div>
 
 <hr>
 
