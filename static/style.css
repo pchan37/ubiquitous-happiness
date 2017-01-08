@@ -55,7 +55,7 @@ h3 {
 
 @media screen and (max-width: 425px) {
 	.image-circle-logo {
-		height: 7.5em;
+		height: 6em;
 	}
 }
 
@@ -67,11 +67,11 @@ h3 {
 
 figure {
 	position: relative;
-	float: left;
-	overflow: hidden;
+	float: right;
 	max-width: 100%;
 	max-height: 100%;
 	width: 100%;
+	overflow: hidden;
 	background: #3085a3;
 	text-align: center;
 	cursor: pointer;
@@ -82,6 +82,7 @@ figure img {
 	display: block;
 	min-height: 100%;
 	max-width: 100%;
+	width: 100%;
 	opacity: 0.8;
 }
 
@@ -119,7 +120,7 @@ figure figcaption > a {
 }
 
 figure h2 {
-	word-spacing: -0.15em;
+	font-family: 'Raleway';
 	font-weight: 300;
 }
 
@@ -175,7 +176,17 @@ figure.effect-oscar h2 {
 	transform: translate3d(0,30%,0);
 }
 
+@media screen and (max-width: 425px) {
+	figure.effect-oscar h2 {
+		margin: 10% 0 0 0;
+	}
+}
 
+@media screen and (max-height: 425px) {
+	figure.effect-oscar h2 {
+		margin: 0 0 0 0;
+	}
+}
 
 figure.effect-oscar figcaption::before,
 figure.effect-oscar p {
@@ -198,16 +209,20 @@ figure.effect-oscar:hover p {
 	transform: scale(1);
 }
 
-.right-side-top > figure.effect-oscar:hover figcaption {
-	background-color: rgba(76,175,80, 0.7);
-}
-
-.right-side-bottom > figure.effect-oscar:hover figcaption {
-	background-color: rgba(244,67,54, 0.7);
-}
-
 figure.effect-oscar:hover img {
 	opacity: 0.4;
+}
+
+.right-side {
+	padding: 0;
+	width: 50%;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 875px) {
+	.right-side {
+		width: 100%;
+	}
 }
 
 .right-side-top, .right-side-bottom {
