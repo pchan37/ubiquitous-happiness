@@ -1,0 +1,222 @@
+html, body, p {
+	-webkit-font-smoothing: antialiased;
+	font-color: black;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 1em;
+}
+
+h1 {
+	font-family: 'Raleway';
+}
+
+h2, h3 {
+	font-family: 'Source Serif Pro';
+}
+
+h1 {
+	font-size: 3.5em;
+	font-color: #000000;
+}
+
+h2 {
+	font-size: 2.5em;
+	font-color: #222222;
+}
+
+h3 {
+	font-size: 1.5em;
+	font-color: #444444;
+}
+
+.row, .left-side {
+	height: 100vh;
+}
+
+.left-side {
+	text-align: center;
+	padding: 2.5% 7.5% 2.5% 7.5%;
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.left-side-inner {
+	margin: 0 auto;
+	display: block;
+	max-width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+.image-circle-logo {
+	height: 10em;
+	margin: 0 auto;
+	padding: 2.5%;
+	max-width: 95%;
+}
+
+@media screen and (max-width: 425px) {
+	.image-circle-logo {
+		height: 7.5em;
+	}
+}
+
+@media screen and (max-height: 425px) {
+	.image-circle-logo {
+		height: 5em;
+	}
+}
+
+figure {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%;
+	background: #3085a3;
+	text-align: center;
+	cursor: pointer;
+}
+
+figure img {
+	position: relative;
+	display: block;
+	min-height: 100%;
+	max-width: 100%;
+	opacity: 0.8;
+}
+
+figure figcaption {
+	padding: 2em;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 1.25em;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+figure figcaption::before,
+figure figcaption::after {
+	pointer-events: none;
+}
+
+figure figcaption,
+figure figcaption > a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+figure figcaption > a {
+	z-index: 1000;
+	text-indent: 200%;
+	white-space: nowrap;
+	font-size: 0;
+	font-weight: bold;
+	opacity: 0;
+}
+
+figure h2 {
+	word-spacing: -0.15em;
+	font-weight: 300;
+}
+
+figure h2 span {
+	font-weight: 800;
+}
+
+figure h2,
+figure p {
+	margin: 0;
+}
+
+figure p {
+	letter-spacing: 1px;
+	font-size: 68.5%;
+}
+
+figure.effect-oscar {
+	background: -webkit-linear-gradient(45deg, #22682a 0%, #9b4a1b 40%, #3a342a 100%);
+	background: linear-gradient(45deg, #22682a 0%,#9b4a1b 40%,#3a342a 100%);
+}
+
+figure.effect-oscar img {
+	opacity: 0.9;
+	-webkit-transition: opacity 0.35s;
+	transition: opacity 0.35s;
+}
+
+figure.effect-oscar figcaption {
+	padding: 3em;
+	background-color: rgba(58,52,42,0.7);
+	-webkit-transition: background-color 0.35s;
+	transition: background-color 0.35s;
+}
+
+figure.effect-oscar figcaption::before {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	bottom: 30px;
+	left: 30px;
+	border: 1px solid #fff;
+	content: '';
+}
+
+figure.effect-oscar h2 {
+	margin: 15% 0 0 0;
+	padding: 0;
+	vertical-align: middle;
+	-webkit-transition: -webkit-transform 0.35s;
+	transition: transform 0.35s;
+	-webkit-transform: translate3d(0,30%,0);
+	transform: translate3d(0,30%,0);
+}
+
+
+
+figure.effect-oscar figcaption::before,
+figure.effect-oscar p {
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+}
+
+figure.effect-oscar:hover h2 {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+figure.effect-oscar:hover figcaption::before,
+figure.effect-oscar:hover p {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.right-side-top > figure.effect-oscar:hover figcaption {
+	background-color: rgba(76,175,80, 0.7);
+}
+
+.right-side-bottom > figure.effect-oscar:hover figcaption {
+	background-color: rgba(244,67,54, 0.7);
+}
+
+figure.effect-oscar:hover img {
+	opacity: 0.4;
+}
+
+.right-side-top, .right-side-bottom {
+	height: 50%;
+	padding: 0px;
+	z-index: 1;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.drop-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
