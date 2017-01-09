@@ -214,6 +214,7 @@ figure.effect-oscar:hover img {
 }
 
 .right-side {
+    margin-left: 0;
 	padding: 0;
 	width: 50%;
 	overflow: hidden;
