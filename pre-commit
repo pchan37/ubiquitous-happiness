@@ -1,0 +1,41 @@
+#!/bin/bash
+
+printf "Name pl0x:\n1)Patrick\n2)Ayman\n3)Celine\n4)Kevin\n5)No Devlog Message (Just for quick fix commits)\n"
+
+read $name </dev/tty
+
+if [[ "$name" -eq "$1" ]]
+then
+    toadd="patrickC - "
+fi
+if [[ "$name" -eq "$2" ]]
+then
+    toadd="aymanA - "
+fi
+if [[ "$name" -eq "$3" ]]
+then
+    toadd="celineY - "
+fi
+if [[ "$name" -eq "$4" ]]
+then
+    toadd="kevinZ - "
+fi
+if [[ "$name" -eq "$5" ]]
+then
+    echo "Exiting without adding to devlog."
+    exit 0
+fi
+
+printf "Please write your devlog message: "
+
+read $message </dev/tty
+
+toadd+="$(date "+%Y-%m-%d %I %r")"
+toadd+=" - "
+final=$toadd$message
+
+echo $final >> devlog.txt
+
+git add --all
+
+exit 0
