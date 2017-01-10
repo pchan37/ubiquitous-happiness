@@ -14,22 +14,44 @@ class database:
             self.cursor.execute(dbCommand)
             self.db.commit()
         else:
-            dbCommand = "CREATE TABLE IF NOT EXISTS ListOfPetsFound ( petID INTEGER, founderEmail TEXT );"
+            dbCommand = "CREATE TABLE IF NOT EXISTS ListOfPetsFound (petID INTEGER, founderEmail TEXT);"
             self.cursor.execute(dbCommand)
-            dbCommand = "CREATE TABLE IF NOT EXISTS ListOfPetsLost ( petID INTEGER, ownerEmail TEXT );"
+            dbCommand = "CREATE TABLE IF NOT EXISTS ListOfPetsLost (petID INTEGER, ownerEmail TEXT);"
             self.cursor.execute(dbCommand)
-            dbCommand = "CREATE TABLE IF NOT EXISTS Pets ( petID INTEGER, location TEXT, petType TEXT, color TEXT, eyeColor TEXT, img TEXT, description TEXT, dateLost TEXT, petName TEXT );"
+            dbCommand = "CREATE TABLE IF NOT EXISTS Pets (petID INTEGER, location TEXT, petType TEXT, color TEXT, eyeColor TEXT, img TEXT, description TEXT, dateLost TEXT, petName TEXT);"
             self.cursor.execute(dbCommand)
             self.db.commit()
 
-    def pull( self, flag ):
-        if( flag == "-l"):
+    def pullLostData(self, pullRequest=None):
+        defaultCommand = "SELECT * FROM Pets, ListOfPetsLost"
+        if pullRequest:
+            dbCommand = defaultCommand + " " + pullRequest + ";"
+        else:
+            dbCommand = defaultCommand + ";"
+        self.cursor.execute(dbCommand)
+        data = self.cursor.fetchall()
+        return data
+
+    def pullFoundData(self, pullRequest=None):
+        defaultCommand = "SELECT * FROM Pets, ListOfPetsFound"
+        if pullRequest:
+            dbCommand = defaultCommand + " " + pullRequest + ";"
+        else:
+            dbCommand = defaultCommand + ";"
+        self.cursor.execute(dbCommand)
+        data = self.cursor.fetchall()
+        return data
+        
+    def pull(self, flag):
+        if( flag == "lost"):
             dbCommand = "SELECT * FROM Pets, ListOfPetsLost WHERE Pets.petID = ListOfPetsLost.petID;"
-            data = self.cursor.execute(dbCommand)
+            self.cursor.execute(dbCommand)
+            data = self.cursor.fetchall()
             return data
-        elif( flag == "-f"):
+        elif( flag == "found"):
             dbCommand = "SELECT * FROM Pets, ListOfPetsFound WHERE Pets.petID = ListOfPetsFound.petID;"
-            data = self.cursor.execute(dbCommand)
+            self.cursor.execute(dbCommand)
+            data = self.cursor.fetchall()
             return data
         else:
             print("Flag not found")
@@ -48,7 +70,7 @@ class database:
         self.db.commit()
 
     def remove( self, petID ):
-        dbCommand = "DELETE * FROM Pets, ListOfPetsLost, ListOfPetsFound WHERE petID = %d"%(petID)
+        dbCommand = "DELETE * FROM Pets, ListOfPetsLost, ListOfPetsFound WHERE petID = %d" % (petID)
         self.cursor.execute(dbCommand)
         self.db.commit()
 
