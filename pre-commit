@@ -1,41 +1,50 @@
-#!/bin/bash
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
 
-printf "Name pl0x:\n1)Patrick\n2)Ayman\n3)Celine\n4)Kevin\n5)No Devlog Message (Just for quick fix commits)\n"
+exec < /dev/tty
 
-read $name </dev/tty
+printf "1)Patrick\n2)Ayman\n3)Celine\n4)Kevin\n5)No devlog message.\nPick a number: "
 
-if [[ "$name" -eq "$1" ]]
-then
-    toadd="patrickC - "
-fi
-if [[ "$name" -eq "$2" ]]
-then
-    toadd="aymanA - "
-fi
-if [[ "$name" -eq "$3" ]]
-then
-    toadd="celineY - "
-fi
-if [[ "$name" -eq "$4" ]]
-then
-    toadd="kevinZ - "
-fi
-if [[ "$name" -eq "$5" ]]
-then
-    echo "Exiting without adding to devlog."
-    exit 0
+read name
+
+if [ "$name" -eq "5" ]; then
+    exit 0;
 fi
 
-printf "Please write your devlog message: "
+printf "What do you wanna add to the devlog: "
 
-read $message </dev/tty
+read devlog
 
-toadd+="$(date "+%Y-%m-%d %I %r")"
-toadd+=" - "
-final=$toadd$message
+now="$(date +"%Y-%m-%d %r")"
 
-echo $final >> devlog.txt
+if [ "$name" -eq "1" ]; then
+    echo "patrickC - $now - $devlog" >> devlog.txt;
+    git add devlog.txt;
+    exit 0;
+fi
 
-git add --all
+if [ "$name" -eq "2" ]; then
+    echo "aymanA - $now - $devlog" >> devlog.txt;
+    git add devlog.txt;
+    exit 0;
+fi
 
-exit 0
+if [ "$name" -eq "3" ]; then
+    echo "celineY - $now - $devlog" >> devlog.txt;
+    git add devlog.txt;
+    exit 0;
+fi
+
+if [ "$name" -eq "4" ]; then
+    echo "kevinZ -- $now - $devlog" >> devlog.txt;
+    git add devlog.txt;
+    exit 0;
+fi
+
+exit 1;    
