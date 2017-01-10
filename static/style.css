@@ -38,7 +38,7 @@ h3 {
 	border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.left-side-inner {
+.side-inner {
 	margin: 0 auto;
 	display: block;
 	max-width: 100%;
@@ -218,6 +218,113 @@ figure.effect-oscar:hover img {
 	padding: 0;
 	width: 50%;
 	overflow: hidden;
+}
+
+a, a:visited, a:hover, a:active {
+	-webkit-backface-visibility:hidden;
+	        backface-visibility:hidden;
+	position:relative;
+	transition:0.5s color ease;
+	text-decoration:none;
+	color:#81b3d2;
+	font-size:2.5em;
+}
+
+.right-side-link:hover {
+    color:#d73444;
+}
+
+.right-side-link.before:before, .right-side-link.after:after {
+    content: "";
+    transition:0.5s all ease;
+    -webkit-backface-visibility:hidden;
+            backface-visibility:hidden;
+    position:absolute;
+}
+
+.right-side-link.before:before {
+    top:-0.25em;
+}
+.right-side-link.after:after {
+    bottom:-0.25em;
+}
+
+.right-side-link.before:before, .right-side-link.after:after {
+    height:5px;
+    height:0.35rem;
+    width:0;
+    background:#d73444;
+}
+
+.right-side-link.before:hover:before, .right-side-link.after:hover:after {
+	width:100%;
+}
+
+.square {
+	box-sizing:border-box;
+	margin-left:-0.4em;
+	position:relative;
+	font-size:2.5em;
+	overflow:hidden;
+}
+
+.square a {
+	position:static;
+	font-size:100%;
+	padding:0.2em 0.4em;
+}
+
+.square:before, .square:after {
+	content: "";
+	box-sizing:border-box;
+	transition:0.25s all ease;
+	-webkit-backface-visibility:hidden;
+	      backface-visibility:hidden;
+	position:absolute;
+	width:5px;
+	width:0.35rem;
+	height:0;
+	background:#d73444;
+}
+
+.square:before {
+	left:0;
+	bottom:-0.2em;
+}
+
+.square.individual:before {
+	transition-delay:0.6s;
+}
+
+.square:after {
+	right:0;
+	top:-0.2em;
+}
+
+.square.individual:after {
+	transition-delay:0.2s;
+}
+
+.square a:before {
+	left:0;
+	transition:0.25s all ease;
+}
+
+.square a:after {
+	right:0;
+	transition:0.25s all ease;
+}
+
+.square.individual a:after {
+	transition:0.25s all ease 0.4s;
+}
+
+.square:hover:before,.square:hover:after {
+	height:calc(100% + 0.4em);
+}
+
+.square:hover a:before,.square:hover a:after { 
+	width:100%;
 }
 
 @media screen and (max-width: 875px) {
