@@ -7,14 +7,26 @@ app = Flask(__name__)
 def home():
 	return render_template("home.html")
 
-@app.route("/found")
+@app.route("/found/")
 def found():
 	return render_template("found.html")
 
-@app.route("/lost")
+@app.route("/lost/")
 def lost():
 	return render_template("lost.html")
 
+@app.route("/pet/<petID>")
+def petInfo( petID ):
+        data = pullFound("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsFound.petID"%(petID));
+        if ( not any(data) ):
+                data = pullLost("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsLost.petID"%(petID))
+        return render_template("pet.html",  location = data['location'], petType = data['petType'], color = data['color'], eyeColor = data['eyeColor'], img = data['img'], description = data['description'], dateLost = data['dateLost'], petName = data['petName'] )
+
+
+@app.route("/petTest/")
+def petTest( ):
+        return render_tempate("pet.html")
+        
 if __name__ == "__main__":
-	app.debug = True
+        app.debug = True
 	app.run()
