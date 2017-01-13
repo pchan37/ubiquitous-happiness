@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Pet Page</title>
+  </head>
+  <body>
+    <h2>Pet Information</h2>
+    <ul>
+      {% if location != "" %}
+      <li><b>Location :</b>{{location}}</li>
+      {% endif %}
+      {% if petType != "" %}
+      <li><b>Type/Species of Pet :</b>{{petType}}</li>
+      {% endif %}
+      {% if color != "" %}
+      <li><b>Color :</b>{{color}}</li>
+      {% endif %}
+      {% if eyeColor != "" %}
+      <li><b>Eye Color :</b>{{eyeColor}}</li>
+      {% endif %}
+      {% if img != "" %}
+      <li><b>Picture :</b><br><img url="{{img}}"></li>
+      {% endif %}
+      {% if description != "" %}
+      <li><b>Description :</b>{{description}}</li>
+      {% endif %}
+      {% if petName != "" %}
+      <li><b>Pet Name :</b>{{petName}}</li>
+      {% endif %}
+    </ul>
+  </body>
+</html>
+

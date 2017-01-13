@@ -4,6 +4,7 @@ class Database:
 
     def __init__(self, remove=False):
         self.db = sqlite3.connect("data/discobandit.db");
+        self.db.row_factory = sqlite3.Row
         self.cursor = self.db.cursor();
         if remove:
             self.removeDatabase()
