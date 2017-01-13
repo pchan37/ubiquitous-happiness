@@ -1,3 +1,5 @@
+patrickC -- 2017-01-13 12:14 PM
+       Added database initialization to database.py
 patrickC -- 2017-01-13 10:15 AM
        Refactored initialization of database in database.pyf
        Reorganized database.py
@@ -5,3 +7,4 @@ kevinZ -- 2017-01-09 12:33 PM
        Started work on database.py
 kevinZ -- 2017-01-09 10:41 PM
        Finished several functions in database.py. Not sure what else will be needed, although there will probably be more additions in the future.
+aymanA - 2017-01-13 12:16:53 PM - __init__

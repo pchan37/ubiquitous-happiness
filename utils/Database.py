@@ -1,10 +1,10 @@
 import sqlite3
 
-class database:
+class Database:
 
     def __init__(self, remove=False):
         self.db = sqlite3.connect("data/discobandit.db");
-        self.cursor = self.db.cursor;
+        self.cursor = self.db.cursor();
         if remove:
             self.removeDatabase()
         self.initDatabase()
