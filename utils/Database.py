@@ -34,8 +34,8 @@ class Database:
             dbCommand = defaultCommand + " " + pullRequest + ";"
         else:
             dbCommand = defaultCommand + ";"
-            self.cursor.execute(dbCommand)
-            data = self.cursor.fetchall()
+        self.cursor.execute(dbCommand)
+        data = self.cursor.fetchall()
         return data
 
     def pullFoundData(self, pullRequest=None):
@@ -44,8 +44,8 @@ class Database:
             dbCommand = defaultCommand + " " + pullRequest + ";"
         else:
             dbCommand = defaultCommand + ";"
-            self.cursor.execute(dbCommand)
-            data = self.cursor.fetchall()
+        self.cursor.execute(dbCommand)
+        data = self.cursor.fetchall()
         return data
 
     def addPet(self, petData, userInfo):
@@ -61,7 +61,7 @@ class Database:
         elif 'founderEmail' in userInfo:
             dbCommand = "INSERT INTO ListOfPetsFound VALUES (%d, %s)"%(petData['petID'], userInfo['foundEmail'])
             self.cursor.execute(dbCommand)
-            self.db.commit()
+        self.db.commit()
 
     def removePet( self, petID ):
         dbCommand = "DELETE * FROM Pets, ListOfPetsLost, ListOfPetsFound WHERE petID = %d" % (petID)
