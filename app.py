@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from utils import database
 
 app = Flask(__name__)
 
@@ -17,9 +18,10 @@ def lost():
 
 @app.route("/pet/<petID>")
 def petInfo( petID ):
-        data = pullFound("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsFound.petID"%(petID));
+        db = database.__init__( __name__ )
+        data = database.pullFoundData(db, "WHERE Pets.petID = %d AND Pets.petID = ListOfPetsFound.petID"%(petID));
         if ( not any(data) ):
-                data = pullLost("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsLost.petID"%(petID))
+                data = database.pullLostData(db, "WHERE Pets.petID = %d AND Pets.petID = ListOfPetsLost.petID"%(petID))
         return render_template("pet.html",  location = data['location'], petType = data['petType'], color = data['color'], eyeColor = data['eyeColor'], img = data['img'], description = data['description'], dateLost = data['dateLost'], petName = data['petName'] )
 
 
