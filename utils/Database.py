@@ -1,6 +1,6 @@
 import sqlite3
 
-class database:
+class Database:
 
     def __init__(self, remove=False):
         self.db = sqlite3.connect("data/discobandit.db");

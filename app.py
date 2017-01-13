@@ -1,8 +1,8 @@
 from flask import Flask, render_template
-from utils import database
+from utils import Database
 
 app = Flask(__name__)
-db = new database()
+db = Database()
 
 #this one will have notifications and such via javascript
 @app.route("/")

@@ -1,3 +1,5 @@
+patrickC -- 2017-01-13 12:14 PM
+       Added database initialization to database.py
 patrickC -- 2017-01-13 10:15 AM
        Refactored initialization of database in database.pyf
        Reorganized database.py
