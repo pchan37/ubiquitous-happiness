@@ -23,6 +23,10 @@ class database:
         dbCommand = "DELETE * FROM ListofPetsLost;"
         self.cursor.execute(dbCommand)
         self.db.commit()
+
+    def saveDatabase(self):
+        self.db.commit()
+        self.db.close()
         
     def pullLostData(self, pullRequest=None):
         defaultCommand = "SELECT * FROM Pets, ListOfPetsLost"
@@ -44,25 +48,22 @@ class database:
             data = self.cursor.fetchall()
         return data
 
- def add( self, petData, userInfo):
-     #petData is a dictionary
-     #Assume that all fields are filled in, with "" if necessary
-     #Assume petID is generated beforehand
-     dbCommand = "INSERT INTO Pets VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s)"%(petData['petID'], petData['location'], petData['petType'], petData['color'], petData['eyeColor'], petData['img'], petData['description'], petData['dateLost'], petData['petName'])
-     self.cursor.execute(dbCommand)
-     if 'ownerEmail' in userInfo:
-         dbCommand = "INSERT INTO ListOfPetsLost VALUES (%d, %s)"%(petData['petID'], userInfo['ownerEmail'])
-         self.cursor.execute(dbCommand)
-     elif 'founderEmail' in userInfo:
-         dbCommand = "INSERT INTO ListOfPetsFound VALUES (%d, %s)"%(petData['petID'], userInfo['foundEmail'])
-         self.cursor.execute(dbCommand)
-         self.db.commit()
+    def addPet(self, petData, userInfo):
+        '''
+        petData is a dictionary with non-empty fields (fill with "" if necessary)
+        Assume that petID is pre-generated
+        '''
+        dbCommand = "INSERT INTO Pets VALUES (%d, %s, %s, %s, %s, %s, %s, %s, %s)"%(petData['petID'], petData['location'], petData['petType'], petData['color'], petData['eyeColor'], petData['img'], petData['description'], petData['dateLost'], petData['petName'])
+        self.cursor.execute(dbCommand)
+        if 'ownerEmail' in userInfo:
+            dbCommand = "INSERT INTO ListOfPetsLost VALUES (%d, %s)"%(petData['petID'], userInfo['ownerEmail'])
+            self.cursor.execute(dbCommand)
+        elif 'founderEmail' in userInfo:
+            dbCommand = "INSERT INTO ListOfPetsFound VALUES (%d, %s)"%(petData['petID'], userInfo['foundEmail'])
+            self.cursor.execute(dbCommand)
+            self.db.commit()
 
-    def remove( self, petID ):
+    def removePet( self, petID ):
         dbCommand = "DELETE * FROM Pets, ListOfPetsLost, ListOfPetsFound WHERE petID = %d" % (petID)
         self.cursor.execute(dbCommand)
         self.db.commit()
-
-    def push(self):
-        self.db.commit()
-        self.db.close()
