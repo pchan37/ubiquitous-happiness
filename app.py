@@ -51,6 +51,11 @@ def updateFound():
     db = Database()
     
 
+@app.route("/remove/")
+def remove():
+    db = Database(True)
+    
+    
 if __name__ == "__main__":
     app.debug = True
     app.run(host='0.0.0.0')

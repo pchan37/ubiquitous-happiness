@@ -17,6 +17,7 @@ class Database:
         dbCommand = "CREATE TABLE IF NOT EXISTS ListOfPetsLost (petID INTEGER, ownerEmail TEXT);"
         self.cursor.execute(dbCommand)
         dbCommand = "CREATE TABLE IF NOT EXISTS Pets (petID INTEGER, location TEXT, petType TEXT, color TEXT, eyeColor TEXT, img TEXT, description TEXT, dateLost TEXT, petName TEXT);"
+        self.cursor.execute(dbCommand)
         self.db.commit()
         
     def removeDatabase(self):
