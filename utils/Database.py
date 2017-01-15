@@ -9,7 +9,8 @@ class Database:
         if remove:
             self.removeDatabase()
         self.initDatabase()
-
+        print "Initialized tables"
+        
     def initDatabase(self):
         dbCommand = "CREATE TABLE IF NOT EXISTS ListOfPetsFound (petID INTEGER, founderEmail TEXT);"
         self.cursor.execute(dbCommand)
@@ -47,6 +48,7 @@ class Database:
             dbCommand = defaultCommand + ";"
         self.cursor.execute(dbCommand)
         data = self.cursor.fetchall()
+        print data
         return data
 
     def addPet(self, petData, userInfo):
