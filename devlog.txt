@@ -10,4 +10,5 @@ kevinZ -- 2017-01-09 10:41 PM
 aymanA - 2017-01-13 12:16:53 PM - __init__
 kevinZ -- 2017-01-12 2:37 PM
        Worked on pet route. It is now working, so there is no more need to do some db fixing. I just need Celine to do some CSS magic now.
-      
+kevinZ -- 2017-01-14 7:55 PM
+       Fixed the issue with Pets table not being created. It was because the command was not being executed. 
