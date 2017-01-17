@@ -28,320 +28,157 @@ h3 {
 	font-color: #444444;
 }
 
-.row, .left-side {
-	height: 100vh;
-}
-
-.left-side {
-	text-align: center;
-	padding: 2.5% 7.5% 2.5% 7.5%;
-	border-right: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.side-inner {
-	margin: 0 auto;
-	display: block;
-	max-width: 100%;
-	height: 100%;
-	text-align: center;
-}
-
-.image-circle-logo {
-	height: 10em;
-	margin: 0 auto;
-	padding: 2.5%;
-	max-width: 95%;
-}
-
-@media screen and (max-width: 425px) {
-	.image-circle-logo {
-		height: 6em;
-	}
-}
-
-@media screen and (max-height: 425px) {
-	.image-circle-logo {
-		height: 5em;
-	}
-}
-
-figure {
-	position: relative;
-	float: right;
-	max-width: 100%;
-	max-height: 100%;
-	width: 100%;
-	overflow: hidden;
-	background: #3085a3;
-	text-align: center;
-	cursor: pointer;
-}
-
-figure img {
-	position: relative;
-	display: block;
-	min-height: 100%;
-	max-width: 100%;
-	width: 100%;
-	opacity: 0.8;
-}
-
-figure figcaption {
-	padding: 2em;
-	color: #fff;
-	text-transform: uppercase;
-	font-size: 1.25em;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-
-figure figcaption::before,
-figure figcaption::after {
-	pointer-events: none;
-}
-
-figure figcaption,
-figure figcaption > a {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-/* Anchor will cover the whole item by default */
-figure figcaption > a {
-	z-index: 1000;
-	text-indent: 200%;
-	white-space: nowrap;
-	font-size: 0;
-	font-weight: bold;
-	opacity: 0;
-}
-
-figure h2 {
-	font-family: 'Raleway';
-	font-weight: 300;
-}
-
-figure h2 span {
-	font-weight: 800;
-}
-
-figure h2,
-figure p {
+.row {
 	margin: 0;
 }
 
-figure p {
-	letter-spacing: 1px;
-	font-size: 68.5%;
+.inner {
+	margin: 0 auto;
+	padding-top: 3em;
+	display: block;
+	max-width: 100%;
+	height: 100%;
+	text-align: center;
 }
 
-figure.effect-oscar {
-	background: -webkit-linear-gradient(45deg, #22682a 0%, #9b4a1b 40%, #3a342a 100%);
-	background: linear-gradient(45deg, #22682a 0%,#9b4a1b 40%,#3a342a 100%);
+.about {
+	text-align: center;
+	padding-top: 5%;
+	padding-bottom: 5%;
 }
 
-figure.effect-oscar img {
-	opacity: 0.9;
-	-webkit-transition: opacity 0.35s;
-	transition: opacity 0.35s;
-}
-
-figure.effect-oscar figcaption {
-	padding: 3em;
-	background-color: rgba(58,52,42,0.7);
-	-webkit-transition: background-color 0.35s;
-	transition: background-color 0.35s;
-}
-
-figure.effect-oscar figcaption::before {
-	position: absolute;
-	top: 30px;
-	right: 30px;
-	bottom: 30px;
-	left: 30px;
-	border: 1px solid #fff;
-	content: '';
-}
-
-figure.effect-oscar h2 {
-	margin: 15% 0 0 0;
+/*.image-circle-logo {
+	height: 90px;
 	padding: 0;
-	vertical-align: middle;
-	-webkit-transition: -webkit-transform 0.35s;
-	transition: transform 0.35s;
-	-webkit-transform: translate3d(0,30%,0);
-	transform: translate3d(0,30%,0);
+	max-width: 95%;
+	display: inline-block;
+	margin: 0 !important;
+}*/
+
+.cover {
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5) ), url('images/cover.jpg') no-repeat center center fixed; 
+	background: linear-gradient();
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
-@media screen and (max-width: 425px) {
-	figure.effect-oscar h2 {
-		margin: 10% 0 0 0;
-	}
-}
-
-@media screen and (max-height: 425px) {
-	figure.effect-oscar h2 {
-		margin: 0 0 0 0;
-	}
-}
-
-figure.effect-oscar figcaption::before,
-figure.effect-oscar p {
-	opacity: 0;
-	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-	transition: opacity 0.35s, transform 0.35s;
-	-webkit-transform: scale(0);
-	transform: scale(0);
-}
-
-figure.effect-oscar:hover h2 {
-	-webkit-transform: translate3d(0,0,0);
-	transform: translate3d(0,0,0);
-}
-
-figure.effect-oscar:hover figcaption::before,
-figure.effect-oscar:hover p {
-	opacity: 1;
-	-webkit-transform: scale(1);
-	transform: scale(1);
-}
-
-figure.effect-oscar:hover img {
-	opacity: 0.4;
-}
-
-.right-side {
-    margin-left: 0;
-	padding: 0;
-	width: 50%;
-	overflow: hidden;
-}
-
-a, a:visited, a:hover, a:active {
-	-webkit-backface-visibility:hidden;
-	        backface-visibility:hidden;
-	position:relative;
-	transition:0.5s color ease;
-	text-decoration:none;
-	color:#000000;
-	font-size:2.5em;
-}
-
-.right-side-link > span.found {
-    
-}
-
-.right-side-link > span.lost {
-    
-}
-
-.right-side-link:hover {
-    color:#d73444;
-}
-
-.right-side-link.before:before, .right-side-link.after:after {
-    content: "";
-    transition:0.5s all ease;
-    -webkit-backface-visibility:hidden;
-            backface-visibility:hidden;
-    position:absolute;
-}
-
-.right-side-link.before:before {
-    top:-0.25em;
-}
-.right-side-link.after:after {
-    bottom:-0.25em;
-}
-
-.right-side-link.before:before, .right-side-link.after:after {
-    height:5px;
-    height:0.1rem;
-    width:0;
-    background:#d73444;
-}
-
-.right-side-link.before:hover:before, .right-side-link.after:hover:after {
-	width:100%;
-}
-
-.square {
-	box-sizing:border-box;
-	margin-left:-0.2em;
-	position:relative;
-	font-size:2em;
-	overflow:hidden;
-}
-
-.square a {
-	position:static;
-	font-size:100%;
-	padding:0.2em 0.4em;
-}
-
-.square:before, .square:after {
-	content: "";
-	box-sizing:border-box;
-	transition:0.1s all ease;
-	-webkit-backface-visibility:hidden;
-	      backface-visibility:hidden;
-	position:absolute;
-	width:1px;
-	width:0.1rem;
-	height:0;
-	background:#d73444;
-}
-
-.square:before {
-	left:0;
-	bottom:-0.2em;
-}
-
-.square.individual:before {
-	transition-delay:0.1s;
-}
-
-.square:after {
-	right:0;
-	top:-0.2em;
-}
-
-.square a:before {
-	left:0;
-	transition:0.1s all ease;
-}
-
-.square a:after {
-	right:0;
-	transition:0.1s all ease;
-}
-
-.square.individual a:after {
-	transition:0.1s all ease 0.4s;
-}
-
-.square:hover:before,.square:hover:after {
-	height:calc(100% + 0.4em);
-}
-
-.square:hover a:before,.square:hover a:after { 
-	width:100%;
-}
-
-@media screen and (max-width: 875px) {
-	.right-side {
-		width: 100%;
-	}
-}
-
-.right-side-top, .right-side-bottom {
-	height: 50%;
+/*.bubble-left {
+	display: inline-block;
+	position: relative;
+	width: 300px;
+	height: 90px;
 	padding: 0px;
+	background: #FFFFFF;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: #222 solid 5px;
+}
+
+.bubble-left:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 15px 20px 15px 0;
+	border-color: transparent #FFFFFF;
+	display: block;
+	width: 0;
 	z-index: 1;
-	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	left: -20px;
+	top: 30px;
+}
+
+.bubble-left:before {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 19px 24px 19px 0;
+	border-color: transparent #222;
+	display: block;
+	width: 0;
+	z-index: 0;
+	left: -29px;
+	top: 26px;
+}
+
+.bubble-right {
+	position: relative;
+	width: 300px;
+	height: 90px;
+	padding: 0px;
+	margin: 0;
+	background: #FFFFFF;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border: #222 solid 5px;
+}
+
+.bubble-right:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 15px 0 15px 20px;
+	border-color: transparent #FFFFFF;
+	display: block;
+	width: 0;
+	z-index: 1;
+	right: -20px;
+	top: 30px;
+}
+
+.bubble-right:before {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 19px 0 19px 24px;
+	border-color: transparent #222;
+	display: block;
+	width: 0;
+	z-index: 0;
+	right: -29px;
+	top: 26px;
+}*/
+
+.cover-divider {
+	height: 15em;
+}
+
+@media screen and (max-height: 700px) {
+	.cover-divider {
+		height: 7.5em;
+	}
+}
+
+.cover-heading {
+	color: #FFF;
+	font-family: "Source Sans Pro";
+	font-weight: 100;
+	font-size: 6em;
+}
+
+.cover-link {
+	font-family: 'Source Sans Pro';
+	font-size: 1.5em;
+	font-weight: 500;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border: 2px solid #FFF;
+	color: #FFF;
+	text-decoration: none !important;
+	border-radius: 15px;
+}
+
+.cover-link:hover {
+	transition: 0.3s background-color;
+	color: #FFF;
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .drop-shadow {

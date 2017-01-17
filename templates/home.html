@@ -15,32 +15,37 @@
 	<link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
 <body>
-	<div class="row" style="margin: 0">
-		<div class="col-md-6 left-side">
-			<div class="side-inner col-xs-12">
-				<h1>Lost & Found</h1>
-				<br><br>
-				<!-- <div class="row"> -->
-					<img class="image-circle-logo" src="static/images/dog.png" alt="Dog Logo" />
-					<img class="image-circle-logo" src="static/images/bird.png" alt="Bird Logo" />
-					<img class="image-circle-logo" src="static/images/cat.png" alt="Cat Logo" />
-				<!-- </div> -->
-				<br><br>
-				<p>Has your cow inexplicably run away? Has a stray otter somehow make its way into your house? Have you ever wished you could return that otter or find your cow easily? If you have, try Lost & Found!</p>
-			</div>
-		</div>
-		<div class="col-md-6 right-side">
-			<div class="side-inner" style="text-align: center">
-				<br><br>
-				<span class="square"><a class="right-side-link before after" href="/found">I've found a pet</a></span>
-				<br><br>
-				<span class="square"><a class="right-side-link before after" href="/lost">I've lost my pet</a></span>
-				<br><br>
-				ayy
-			</div>
+	<div class="cover">
+		<div class="inner">
+			<h1 class="cover-heading">Lost & Found</h1>
+			<div class="cover-divider"></div>
+			<a href="/found" class="cover-link">Found a Pet</a>
+			<div style="height: 4em"></div>
+			<a href="/lost" class="cover-link">Lost a Pet</a>
 		</div>
 	</div>
 
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6 about">
+			<h1>Find Out What People Are Saying About Us!</h1>
+			<!-- <div style="text-align: left">
+				<img class="image-circle-logo img-responsive" src="static/images/dog.png" alt="Dog Logo" />
+				<div class="bubble-left"></div>
+			</div>
+			<div style="text-align: right ; white-space: nowrap ; overflow: hidden">
+				<div class="bubble-right"></div>
+				<img class="image-circle-logo img-responsive" src="static/images/bird.png" alt="Bird Logo" />
+			</div>
+			<div style="text-align: left">
+				<img class="image-circle-logo img-responsive" src="static/images/cat.png" alt="Cat Logo" />
+			</div> -->
+		</div>
+		<div class="col-sm-3"></div>
+	</div>
+
+	<!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<!-- Bootstrap -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<!-- Bootstrap Notify -->
