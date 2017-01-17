@@ -1,3 +1,5 @@
+patrickC -- 2017-01-13 12:14 PM
+       Added database initialization to database.py
 patrickC -- 2017-01-13 10:15 AM
        Refactored initialization of database in database.pyf
        Reorganized database.py
@@ -5,4 +7,9 @@ kevinZ -- 2017-01-09 12:33 PM
        Started work on database.py
 kevinZ -- 2017-01-09 10:41 PM
        Finished several functions in database.py. Not sure what else will be needed, although there will probably be more additions in the future.
+aymanA - 2017-01-13 12:16:53 PM - __init__
+kevinZ -- 2017-01-12 2:37 PM
+       Worked on pet route. It is now working, so there is no more need to do some db fixing. I just need Celine to do some CSS magic now.
+kevinZ -- 2017-01-14 7:55 PM
+       Fixed the issue with Pets table not being created. It was because the command was not being executed.
 aymanA - 2017-01-16 07:57:49 PM - added new cover page

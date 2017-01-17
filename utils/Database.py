@@ -1,20 +1,23 @@
 import sqlite3
 
-class database:
+class Database:
 
     def __init__(self, remove=False):
         self.db = sqlite3.connect("data/discobandit.db");
-        self.cursor = self.db.cursor;
+        self.db.row_factory = sqlite3.Row
+        self.cursor = self.db.cursor();
         if remove:
             self.removeDatabase()
         self.initDatabase()
-
+        print "Initialized tables"
+        
     def initDatabase(self):
         dbCommand = "CREATE TABLE IF NOT EXISTS ListOfPetsFound (petID INTEGER, founderEmail TEXT);"
         self.cursor.execute(dbCommand)
         dbCommand = "CREATE TABLE IF NOT EXISTS ListOfPetsLost (petID INTEGER, ownerEmail TEXT);"
         self.cursor.execute(dbCommand)
         dbCommand = "CREATE TABLE IF NOT EXISTS Pets (petID INTEGER, location TEXT, petType TEXT, color TEXT, eyeColor TEXT, img TEXT, description TEXT, dateLost TEXT, petName TEXT);"
+        self.cursor.execute(dbCommand)
         self.db.commit()
         
     def removeDatabase(self):
@@ -34,8 +37,8 @@ class database:
             dbCommand = defaultCommand + " " + pullRequest + ";"
         else:
             dbCommand = defaultCommand + ";"
-            self.cursor.execute(dbCommand)
-            data = self.cursor.fetchall()
+        self.cursor.execute(dbCommand)
+        data = self.cursor.fetchall()
         return data
 
     def pullFoundData(self, pullRequest=None):
@@ -44,8 +47,9 @@ class database:
             dbCommand = defaultCommand + " " + pullRequest + ";"
         else:
             dbCommand = defaultCommand + ";"
-            self.cursor.execute(dbCommand)
-            data = self.cursor.fetchall()
+        self.cursor.execute(dbCommand)
+        data = self.cursor.fetchall()
+        print data
         return data
 
     def addPet(self, petData, userInfo):
@@ -61,7 +65,7 @@ class database:
         elif 'founderEmail' in userInfo:
             dbCommand = "INSERT INTO ListOfPetsFound VALUES (%d, %s)"%(petData['petID'], userInfo['foundEmail'])
             self.cursor.execute(dbCommand)
-            self.db.commit()
+        self.db.commit()
 
     def removePet( self, petID ):
         dbCommand = "DELETE * FROM Pets, ListOfPetsLost, ListOfPetsFound WHERE petID = %d" % (petID)
