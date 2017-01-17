@@ -6,6 +6,9 @@ app = Flask(__name__)
 #this one will have notifications and such via javascript
 @app.route("/")
 def home():
+    global db
+    if not db:
+        db = Database()
     return render_template("home.html")
 
 @app.route("/found/")
@@ -18,7 +21,6 @@ def lost():
 
 @app.route("/pet/<petID>")
 def petInfo(petID):
-    db = Database()
     data = db.pullFoundData("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsFound.petID"%(int(petID)))
     if (not any(data)):
         data = db.pullLostData("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsLost.petID"%(int(petID)))
@@ -48,14 +50,15 @@ def updateFound():
     #    string += " AND Pets.location = %s OR Pets.location != ''"%(formData['location']);
     if('petName' in formData and formData['petName'] != "" ):
         string += " AND Pets.location = %s OR Pets.location != ''"%(formData['petName'].lower());
-    db = Database()
     
-
+        
 @app.route("/remove/")
 def remove():
+    global db
     db = Database(True)
     
     
 if __name__ == "__main__":
     app.debug = True
+    db = None
     app.run(host='0.0.0.0')

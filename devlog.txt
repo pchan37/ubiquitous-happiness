@@ -1,3 +1,5 @@
+patrickC -- 2017-01-17 12:18 PM
+       Modified app.py to use one database connection per user
 patrickC -- 2017-01-13 12:14 PM
        Added database initialization to database.py
 patrickC -- 2017-01-13 10:15 AM
