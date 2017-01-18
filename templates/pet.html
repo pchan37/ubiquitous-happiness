@@ -12,42 +12,40 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:300|Source+Sans+Pro:300|Source+Serif+Pro" rel="stylesheet">
   <!-- My Styles -->
-  <link rel="stylesheet" type="text/css" href="static/style.css">
+  <link rel="stylesheet" type="text/css" href="../static/style.css">
   </head>
   <body>
-    <div class="cover">
-    <div class="inner">
-      <h1 class="cover-heading">hullo</h1>
-      <div class="cover-divider"></div>
-      <a href="/found" class="cover-link">Found a Pet</a>
-      <div style="height: 4em"></div>
-      <a href="/lost" class="cover-link">Lost a Pet</a>
-    </div>
-  </div>
-    <h2>Pet Information</h2>
+    <div class="container"> 
+    <div class="col-md-9">
+    <h2>{{petName}}'s Information</h2>
     <ul>
+      {% if img != "" %}
+      <li><b>Picture: </b><br><img url="{{img}}"></li>
+      {% endif %}
       {% if location != "" %}
-      <li><b>Location :</b>{{location}}</li>
+      <li><b>Location: </b>{{location}}</li>
       {% endif %}
       {% if petType != "" %}
-      <li><b>Type/Species of Pet :</b>{{petType}}</li>
+      <li><b>Type/Species of Pet: </b>{{petType}}</li>
       {% endif %}
       {% if color != "" %}
-      <li><b>Color :</b>{{color}}</li>
+      <li><b>Color: </b>{{color}}</li>
       {% endif %}
       {% if eyeColor != "" %}
-      <li><b>Eye Color :</b>{{eyeColor}}</li>
-      {% endif %}
-      {% if img != "" %}
-      <li><b>Picture :</b><br><img url="{{img}}"></li>
+      <li><b>Eye Color:</b>{{eyeColor}}</li>
       {% endif %}
       {% if description != "" %}
-      <li><b>Description :</b>{{description}}</li>
+      <li><b>Description: </b>{{description}}</li>
       {% endif %}
       {% if petName != "" %}
-      <li><b>Pet Name :</b>{{petName}}</li>
+      <li><b>Pet Name: </b>{{petName}}</li>
       {% endif %}
     </ul>
+    </div> 
+    <div class="col-md-3">
+      <h3> Contact Info </h3>
+    </div>
+    </div>
 
   <!-- Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
