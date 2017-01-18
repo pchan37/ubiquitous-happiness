@@ -21,12 +21,12 @@ def lost():
 
 @app.route("/pet/<petID>")
 def petInfo(petID):
-    data = db.pullFoundData("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsFound.petID"%(int(petID)))
-    if (not any(data)):
-        data = db.pullLostData("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsLost.petID"%(int(petID)))
-    if( data != [] ):
+    data = db.pullFoundData("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsFound.petID" % (int(petID)))
+    if not data:
+        data = db.pullLostData("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsLost.petID" % (int(petID)))
+    if data:
         data = data[0];
-        return render_template("pet.html",  location = data['location'], petType = data['petType'], color = data['color'], eyeColor = data['eyeColor'], img = data['img'], description = data['description'], dateLost = data['dateLost'], petName = data['petName'] )
+        return render_template("pet.html",  location = data['location'], petType = data['petType'], color = data['color'], eyeColor = data['eyeColor'], img = data['img'], description = data['description'], dateLost = data['dateLost'], petName = data['petName'])
     else:
         return "petID not on record"
 
