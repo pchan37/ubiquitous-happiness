@@ -13,7 +13,8 @@ def home():
 
 @app.route("/found/")
 def found():
-    return render_template("found.html")
+    data = db.pullFoundData("WHERE Pets.petID = ListOfPetsFound.petID")
+    return render_template("found.html", data = data)
 
 @app.route("/lost/")
 def lost():
@@ -35,13 +36,13 @@ def updateFound():
     formData = request.args();
     string = "WHERE Pets.petID = ListOfPetsFound.petID"
     if('location' in formData and formData['location'] != "" ):
-        string += " AND Pets.location = %s OR Pets.location != ''"%(formData['location'].lower());
+        string += " AND Pets.location = %s OR Pets.location = ''"%(formData['location'].lower());
     if('petType' in formData and formData['petType'] != "" ):
-        string += " AND Pets.petType = %s OR Pets.petType != ''"%(formData['petType'].lower());
+        string += " AND Pets.petType = %s OR Pets.petType = ''"%(formData['petType'].lower());
     if('color' in formData and formData['color'] != "" ):
-        string += " AND Pets.color = %s OR Pets.color != ''"%(formData['color'].lower());
+        string += " AND Pets.color = %s OR Pets.color = ''"%(formData['color'].lower());
     if('eyeColor' in formData and formData['eyeColor'] != "" ):
-        string += " AND Pets.eyeColor = %s OR Pets.eyeColor != ''"%(formData['eyeColor'].lower());
+        string += " AND Pets.eyeColor = %s OR Pets.eyeColor = ''"%(formData['eyeColor'].lower());
     #if('img' in formData and formData['img'] != "" ):
     #    string += " AND Pets.img = %s OR Pets.img != ''"%(formData['location']);
     #if('description' in formData and formData['description'] != "" ):
@@ -49,7 +50,9 @@ def updateFound():
     #if('dateLost' in formData and formData['dateLost'] != "" ):
     #    string += " AND Pets.location = %s OR Pets.location != ''"%(formData['location']);
     if('petName' in formData and formData['petName'] != "" ):
-        string += " AND Pets.location = %s OR Pets.location != ''"%(formData['petName'].lower());
+        string += " AND Pets.petName = %s OR Pets.petName = ''"%(formData['petName'].lower());
+    data = db.pullFoundData(string);
+    return render_template("found.html", data = data );
     
         
 @app.route("/remove/")
