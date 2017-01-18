@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Found A Pet{% endblock %}
+{% block content %}
+<div class="contentForm">
+  <form action="submitFound" method="POST">
+    <b>Where:</b><input type="text" id="location"></input>
+  </form>
+{% endblock %}
+{% block jsFiles %}
+<script src="static/found.js"></script>
+<script src="../static/found.js"></script>
