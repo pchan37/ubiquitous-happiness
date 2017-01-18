@@ -16,3 +16,4 @@ kevinZ -- 2017-01-14 7:55 PM
        Fixed the issue with Pets table not being created. It was because the command was not being executed.
 aymanA - 2017-01-16 07:57:49 PM - added new cover page
 kevinZ -- 2017-01-18 12:22:36 PM - Created base.html
+kevinZ -- 2017-01-18 03:19:30 PM - Worked on found.html and base.html
