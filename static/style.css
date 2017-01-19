@@ -57,6 +57,7 @@ h3 {
 	background: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5) ), url('images/cover.jpg') no-repeat center center fixed; 
 	background: linear-gradient();
 	height: 100vh;
+    overflow: hidden;
 	width: 100vw;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
