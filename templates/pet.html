@@ -20,30 +20,31 @@
     <h2>{{petName}}'s Information</h2>
     <ul>
       {% if img != "" %}
-      <li><b>Picture: </b><br><img url="{{img}}"></li>
+      <b>Picture: </b><br><img url="{{img}}"> <br>
       {% endif %}
       {% if location != "" %}
-      <li><b>Location: </b>{{location}}</li>
+      <b>Location: </b>{{location}} <br>
       {% endif %}
       {% if petType != "" %}
-      <li><b>Type/Species of Pet: </b>{{petType}}</li>
+      <b>Species: </b>{{petType}} <br>
       {% endif %}
       {% if color != "" %}
-      <li><b>Color: </b>{{color}}</li>
+      <b>Color: </b>{{color}} <br>
       {% endif %}
       {% if eyeColor != "" %}
-      <li><b>Eye Color:</b>{{eyeColor}}</li>
+      <b>Eye Color:</b>{{eyeColor}} <br>
       {% endif %}
       {% if description != "" %}
-      <li><b>Description: </b>{{description}}</li>
+      <b>Description: </b>{{description}} <br>
       {% endif %}
       {% if petName != "" %}
-      <li><b>Pet Name: </b>{{petName}}</li>
+      <b>Pet Name: </b>{{petName}}<br>
       {% endif %}
     </ul>
     </div> 
     <div class="col-md-3">
-      <h3> Contact Info </h3>
+      <h3> Contact Info </h3> <br>
+      Email:
     </div>
     </div>
 
