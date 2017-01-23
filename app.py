@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from utils.Database import Database
 
 app = Flask(__name__)
@@ -13,6 +13,8 @@ def home():
 
 @app.route("/found/")
 def found():
+    if not db:
+        return redirect( url_for('home'))
     data = db.pullFoundData("WHERE Pets.petID = ListOfPetsFound.petID")
     return render_template("found.html", data = data)
 
