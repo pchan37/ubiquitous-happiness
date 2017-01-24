@@ -3,8 +3,8 @@ var $form = $('form'),
 
 var update = function(){
     //var input = document.getElementById(formData);
-    var str = $( "form" ).serializeArray();    
-    $.get("/updateFound", {"formData" : str}, function(d){ console.log("success"); } );
+    var str = $( "form" ).serializeArray();
+    $.post("/updateFound/", {formData: JSON.stringify(str)}, function(d){ console.log("success"); } );
 };
 
 
