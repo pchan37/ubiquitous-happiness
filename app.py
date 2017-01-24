@@ -35,7 +35,8 @@ def petInfo(petID):
 
 @app.route("/updateFound/")
 def updateFound():
-    formData = request.args();
+    formData = request.args('formData');
+    print(formData);
     string = "WHERE Pets.petID = ListOfPetsFound.petID"
     if('location' in formData and formData['location'] != "" ):
         string += " AND Pets.location = %s OR Pets.location = ''"%(formData['location'].lower());
@@ -54,7 +55,7 @@ def updateFound():
     if('petName' in formData and formData['petName'] != "" ):
         string += " AND Pets.petName = %s OR Pets.petName = ''"%(formData['petName'].lower());
     data = db.pullFoundData(string);
-    return render_template("found.html", data = data );
+    return render_template("found.html", data = data, temp = formData);
     
         
 @app.route("/remove/")
