@@ -1,3 +1,7 @@
+patrickC -- 2017-01-24 11:00 AM
+       Managed to get the client-side to render new data (very hacky, need to pull thoughts from team)
+       Note: Need to rewrite the codebase (it's a huge mess right now)
+       Note: Need to "reset" the data rendered when user reset the form to original state
 patrickC -- 2017-01-24 09:50 AM
        Fixed case-insensitive matching
        Fixed fuzzy matching component (return data that starts with a 's' when you type 's')

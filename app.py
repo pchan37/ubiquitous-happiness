@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
+from utils.utils import processDatabaseResponse
 from utils.Database import Database
 
 app = Flask(__name__)
@@ -68,7 +69,7 @@ def updateFound():
     print substitutionSequence
     data = db.pullFoundData(string, substitutionSequence);
     print data
-    return render_template("found.html", data = data);
+    return processDatabaseResponse(data)
     
         
 @app.route("/remove/")
