@@ -1,7 +1,6 @@
 def processDatabaseResponse(response):
     result = ""
     for petData in response:
-        print petData
         result += '<div class="dataObject">\n'
         result += '\t<img src="%s" alt="IMAGE NOT FOUND" height="250px" width="250px">\n' % petData['img']
         result += '\t<h3>Pet Information</h3>\n'
@@ -16,3 +15,11 @@ def processDatabaseResponse(response):
         result += '\t</ul>\n'
         result += '</div>\n\n'
     return result
+
+def convertFormArrayToDict(formArray):
+    dictionary = {}
+    for keyValuePair in formArray:
+        key = keyValuePair['name']
+        value = keyValuePair['value']
+        dictionary[key] = value
+    return dictionary

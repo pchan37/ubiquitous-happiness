@@ -1,3 +1,8 @@
+patrickC -- 2017-01-24 12:00 PM
+       Got the dateLost field to work
+       Fixed path to static content for all templates
+       Did some refactoring to the codebase for a somewhat cleaner codebase
+       Note: Need to "reset" the data rendered when user reset the form to original state
 patrickC -- 2017-01-24 11:00 AM
        Managed to get the client-side to render new data (very hacky, need to pull thoughts from team)
        Note: Need to rewrite the codebase (it's a huge mess right now)

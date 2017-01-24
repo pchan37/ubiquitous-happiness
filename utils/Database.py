@@ -31,13 +31,16 @@ class Database:
         self.db.commit()
         self.db.close()
         
-    def pullLostData(self, pullRequest=None):
+    def pullLostData(self, pullRequest=None, pullRequestSubsitutionSequence=None):
         defaultCommand = "SELECT * FROM Pets, ListOfPetsLost"
         if pullRequest:
             dbCommand = defaultCommand + " " + pullRequest + ";"
         else:
             dbCommand = defaultCommand + ";"
-        self.cursor.execute(dbCommand)
+        if pullRequestSubsitutionSequence:
+            self.cursor.execute(dbCommand, pullRequestSubsitutionSequence)
+        else:
+            self.cursor.execute(dbCommand)
         data = self.cursor.fetchall()
         return data
 
