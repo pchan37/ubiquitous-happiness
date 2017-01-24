@@ -2,35 +2,34 @@
 {% block title %}Found A Pet{% endblock %}
 {% block content %}
     <div class="page-panel">
-	<div class="contentForm">
-	    <p>Fill out form to narrow results</p>
-	    <form id="formData" action="submitFound" method="POST">
-		<b>Pet Name:</b><input type="text" name="petName" id="petName" class="formInput"></input>
-		<b>Where:</b><input type="text" name="location" id="location" class="formInput"></input>
-		<b>Date Lost:</b><input type="date" name="date" id="date" class="formInput"></input>
-		<b>Color:</b><input type="text" name="color" id="color" class="formInput"></input>
-		<b>Eye Color:</b><input type="text" name="eyeColor" id="eyeColor" class="formInput"></input>
-		<b>Type of Pet:</b><input type="text" name="petType" id="petType" class="formInput"></input>
-	    </form>
-	</div>
-	<div class="contentData">
-	    {{temp}}
-	    {% for d in data %}
-		<div class="dataObject">
-		    <img src="{{d['img']}}" alt="IMAGE NOT FOUND" height="250px" width="250px">
-		    <h3>Pet Information</h3>
-		    <ul>
-			<li><b>Pet Name:</b>{{d['petName']}}</li>
-			<li><b>Type of Pet:</b>{{d['petType']}}</li>
-			<li><b>Color:</b>{{d['color']}}</li>
-			<li><b>Eye Color:</b>{{d['eyeColor']}}</li>
-			<li><b>Date Found:</b>{{d['dateLost']}}</li>
-			<li><b>Where:</b>{{d['location']}}</li>
-			<li>Sounds Like your Pet? <a href="/pet/{{d['petID']}}">Click Here</a></li>
-		    </ul>
-		</div>
-	    {% endfor %}
-	</div>
+        <div class="contentForm">
+            <p>Fill out form to narrow results</p>
+            <form id="formData" action="submitFound" method="POST">
+                <b>Pet Name:</b><input type="text" name="petName" id="petName" class="formInput"></input>
+                <b>Where:</b><input type="text" name="location" id="location" class="formInput"></input>
+                <b>Date Lost:</b><input type="date" name="date" id="date" class="formInput"></input>
+                <b>Color:</b><input type="text" name="color" id="color" class="formInput"></input>
+                <b>Eye Color:</b><input type="text" name="eyeColor" id="eyeColor" class="formInput"></input>
+                <b>Type of Pet:</b><input type="text" name="petType" id="petType" class="formInput"></input>
+            </form>
+        </div>
+        <div class="contentData">
+            {% for d in data %}
+                <div class="dataObject">
+                    <img src="{{d['img']}}" alt="IMAGE NOT FOUND" height="250px" width="250px">
+                    <h3>Pet Information</h3>
+                    <ul>
+                        <li><b>Pet Name:</b>{{d['petName']}}</li>
+                        <li><b>Type of Pet:</b>{{d['petType']}}</li>
+                        <li><b>Color:</b>{{d['color']}}</li>
+                        <li><b>Eye Color:</b>{{d['eyeColor']}}</li>
+                        <li><b>Date Found:</b>{{d['dateLost']}}</li>
+                        <li><b>Where:</b>{{d['location']}}</li>
+                        <li>Sounds Like your Pet? <a href="/pet/{{d['petID']}}">Click Here</a></li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
 {% block jsFiles %}

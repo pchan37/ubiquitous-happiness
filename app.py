@@ -37,7 +37,6 @@ def petInfo(petID):
 @app.route("/updateFound/", methods=['POST'])
 def updateFound():
     formData = json.loads(request.form.get('formData'))
-    print formData
     result = {}
     for item in formData:
         result[item['name']] = item['value']
@@ -57,12 +56,10 @@ def updateFound():
     #if('dateLost' in result and result['dateLost'] != "" ):
     #    string += " AND Pets.location = %s OR Pets.location != ''"%(result['location']);
     if('petName' in result and result['petName'] != "" ):
-        string += " AND Pets.petName = %s OR Pets.petName = ''"%(result['petName'].lower());
-    print string
+        string += " AND Pets.petName LIKE '%s' OR Pets.petName LIKE ''"%(result['petName'].lower());
     data = db.pullFoundData(string);
     print data
-    print "\n\n\n\n\n"
-    return render_template("found.html", data = data, temp = result);
+    return render_template("found.html", data = data);
     
         
 @app.route("/remove/")

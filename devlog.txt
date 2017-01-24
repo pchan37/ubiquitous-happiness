@@ -1,3 +1,6 @@
+patrickC -- 2017-01-24 01:20 AM
+       Fixed bug with the communication between client and server
+       Need to fix the rendering of the new data along with fix the errors when retrieving data in columns other than name
 patrickC -- 2017-01-23 12:30 PM
        Started working on found.js, have an error to fix
 patrickC -- 2017-01-17 12:18 PM

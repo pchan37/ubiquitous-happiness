@@ -47,10 +47,8 @@ class Database:
             dbCommand = defaultCommand + " " + pullRequest + ";"
         else:
             dbCommand = defaultCommand + ";"
-        print dbCommand
         self.cursor.execute(dbCommand)
         data = self.cursor.fetchall()
-        print data
         return data
 
     def addPet(self, petData, userInfo):
