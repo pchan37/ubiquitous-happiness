@@ -40,24 +40,33 @@ def updateFound():
     result = {}
     for item in formData:
         result[item['name']] = item['value']
+    print result
     string = "WHERE Pets.petID = ListOfPetsFound.petID"
+    substitutionSequence = []
     if('location' in result and result['location'] != "" ):
-        string += " AND Pets.location = %s OR Pets.location = ''"%(result['location'].lower());
+        string += " AND (Pets.location LIKE ? OR Pets.location LIKE '')"
+        substitutionSequence.append('%' + result['location'] + '%')
     if('petType' in result and result['petType'] != "" ):
-        string += " AND Pets.petType = %s OR Pets.petType = ''"%(result['petType'].lower());
+        string += " AND (Pets.petType LIKE ? OR Pets.petType LIKE '')"
+        substitutionSequence.append('%' + result['petType'] + '%')
     if('color' in result and result['color'] != "" ):
-        string += " AND Pets.color = %s OR Pets.color = ''"%(result['color'].lower());
+        string += " AND (Pets.color LIKE ? OR Pets.color LIKE '')"
+        substitutionSequence.append('%' + result['color'] + '%')
     if('eyeColor' in result and result['eyeColor'] != "" ):
-        string += " AND Pets.eyeColor = %s OR Pets.eyeColor = ''"%(result['eyeColor'].lower());
+        string += " AND (Pets.eyeColor LIKE ? OR Pets.eyeColor LIKE '')"
+        substitutionSequence.append('%' + result['eyeColor'] + '%')
     #if('img' in result and result['img'] != "" ):
-    #    string += " AND Pets.img = %s OR Pets.img != ''"%(result['location']);
+    #    string += " AND Pets.img LIKE '%s' OR Pets.img != ''"%(result['location']);
     #if('description' in result and result['description'] != "" ):
-    #    string += " AND Pets.location = %s OR Pets.location != ''"%(result['location']);
+    #    string += " AND Pets.location LIKE '%s' OR Pets.location != ''"%(result['location']);
     #if('dateLost' in result and result['dateLost'] != "" ):
-    #    string += " AND Pets.location = %s OR Pets.location != ''"%(result['location']);
-    if('petName' in result and result['petName'] != "" ):
-        string += " AND Pets.petName LIKE '%s' OR Pets.petName LIKE ''"%(result['petName'].lower());
-    data = db.pullFoundData(string);
+    #    string += " AND Pets.location LIKE '%s' OR Pets.location != ''"%(result['location']);
+    if('petName' in result and result['petName'] != "" ): 
+        string += " AND (Pets.petName LIKE ? OR Pets.petName LIKE '')"
+        substitutionSequence.append('%' + result['petName'] + '%')
+    print string
+    print substitutionSequence
+    data = db.pullFoundData(string, substitutionSequence);
     print data
     return render_template("found.html", data = data);
     

@@ -1,3 +1,8 @@
+patrickC -- 2017-01-24 09:50 AM
+       Fixed case-insensitive matching
+       Fixed fuzzy matching component (return data that starts with a 's' when you type 's')
+       Inserted parenthesis so that querying for multiple pieces of data works
+       Note: Need to refactor/rewrite the codebase (it's a huge mess right now)
 patrickC -- 2017-01-24 01:20 AM
        Fixed bug with the communication between client and server
        Need to fix the rendering of the new data along with fix the errors when retrieving data in columns other than name
