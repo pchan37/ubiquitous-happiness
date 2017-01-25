@@ -4,13 +4,13 @@ var $form = $('form'),
 var update = function(){
     //var input = document.getElementById(formData);
     var str = $( "form" ).serializeArray();    
-    $.get("/updateFound", {"formData" : str}, function(d){ console.log("success"); } );
+    $.get("/updateFound/", {"formData" : str}, function(){ console.log("success"); } );
 };
 
 
 $('form :input').on('change input', function(){
     if ($form.serialize() != origForm){
-	update();
+	    update();
     }
 });
 
