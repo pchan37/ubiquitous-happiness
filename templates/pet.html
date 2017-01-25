@@ -13,40 +13,86 @@
 	<link href="https://fonts.googleapis.com/css?family=Raleway:300|Source+Sans+Pro:300|Source+Serif+Pro" rel="stylesheet">
 	<!-- My Styles -->
 	<link rel="stylesheet" type="text/css" href="../static/style.css">
+
     </head>
+
+
     <body>
+
 	<div class="container">
+
+      <!-- LEFT SIDE -->
 	    <div class="col-md-9">
-		<h2>{{data['petName']}}'s Information</h2>
-		<ul>
+      <div style="height: 3em"></div>
+
+      {% if data['petName'] != "" %}
+		    <h2>{{data['petName']}}'s Information</h2>
+      {% else %}
+        <h2>Unnamed Pet Information</h2>
+      {% endif %}
+
+		  <div style="height: 1em"></div>
+
+      {% if data['description'] != "" %}
+        {{data['description']}} <br> <br>
+      {% endif %}
+
+      pic goes here 
 		    {% if data['img'] != "" %}
 			<b>Picture: </b><br><img url="{{data['img']}}"> <br>
 		    {% endif %}
+      <div style="height: 1em"></div>
+
+        <table>
+
+            <colgroup>
+            <col style="width:20%">
+            <col style="width:80%">
+          </colgroup>  
+
 		    {% if data['location'] != "" %}
-			<b>Location: </b>{{data['location']}} <br>
-		    {% endif %}
-		    {% if data['petType'] != "" %}
-			<b>Species: </b>{{data['petType']}} <br>
-		    {% endif %}
-		    {% if data['color'] != "" %}
-			<b>Color: </b>{{data['color']}} <br>
-		    {% endif %}
-		    {% if data['eyeColor'] != "" %}
-			<b>Eye Color:</b>{{data['eyeColor']}} <br>
-		    {% endif %}
-		    {% if data['description'] != "" %}
-			<b>Description: </b>{{data['description']}} <br>
-		    {% endif %}
-		    {% if data['petName'] != "" %}
-			<b>Pet Name: </b>{{data['petName']}}<br>
-		    {% endif %}
-		</ul>
+			   <tr>
+          <td><b>Location</b></td>
+          <td> {{data['location']}} <br> </td>
+        </tr>
+        {% endif %}
+
+        {% if data['petType'] != "" %}
+         <tr>
+          <td> <b>Species</b></td>
+          <td> {{data['petType']}} <br> </td>
+        </tr>
+        {% endif %}
+
+        {% if data['color'] != "" %}
+         <tr>
+          <td><b>Color</b> </td>
+          <td> {{data['color']}} <br> </td>
+        </tr>
+        {% endif %}
+
+        {% if data['eyeColor'] != "" %}
+         <tr>
+          <td><b>Eye Color </b></td>
+          <td> {{data['eyeColor']}} <br> </td>
+        </tr>
+        {% endif %}
+		
+      </table>
+      <div style="height: 4em"></div>
+      <a href="/" class="cover-link-dark">Back to Home</a>
+
 	    </div>
-	    <div class="col-md-3">
-		<h3> Contact Info </h3> <br>
-		Email:
+
+      <!-- RIGHT SIDE -->
+	    <div class="col-md-3 vertical_divider">
+      <div style="height: 3em"></div>
+		    <h3> Contact Info </h3> <br>
+          Name: I NEED THIS KEVIN<br>
+		      Email: KEEVINNNNNNN Q _ Q
+
 	    </div>
-	</div>
+	   </div>
 
 	<!-- Jquery -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
