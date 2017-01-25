@@ -18,10 +18,13 @@ def found():
     if not db:
         return redirect(url_for('home'))
     data = db.pullFoundData("WHERE Pets.petID = ListOfPetsFound.petID")
-    return render_template("found.html", data=data)
+    return render_template("found.html", data = data)
 
 @app.route("/lost/")
 def lost():
+    if not db:
+        return redirect(url_for('home'))
+    data = db.pullLostData("WHERE Pets.petID = ListOfPetsLost.petID")
     return render_template("lost.html")
 
 @app.route("/pet/<petID>")
@@ -68,6 +71,39 @@ def updateFound():
         dbCommand += " AND (Pets.dateLost LIKE ? OR Pets.dateLost LIKE '')"
         substitutionSequence.append('%' + formDataDictionary['dateLost'] + '%')
     data = db.pullFoundData(dbCommand, substitutionSequence)
+    return processDatabaseResponse(data)
+
+@app.route("/updateLost/", methods=['POST'])
+def updateLost():
+    formDataArray = loads(request.form.get('formData'))
+    formDataDictionary = convertFormArrayToDict(formDataArray)
+    dbCommand = "WHERE Pets.petID = ListOfPetsLost.petID"
+    substitutionSequence = []
+    if formDataDictionary.get('petName'):
+        dbCommand += " AND (Pets.petName LIKE ? OR Pets.petName LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['petName'] + '%')
+    if formDataDictionary.get('location'):
+        dbCommand += " AND (Pets.location LIKE ? OR Pets.location LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['location'] + '%')
+    if formDataDictionary.get('petType'):
+        dbCommand += " AND (Pets.petType LIKE ? OR Pets.petType LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['petType'] + '%')
+    if formDataDictionary.get('color'):
+        dbCommand += " AND (Pets.color LIKE ? OR Pets.color LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['color'] + '%')
+    if formDataDictionary.get('eyeColor'):
+        dbCommand += " AND (Pets.eyeColor LIKE ? OR Pets.eyeColor LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['eyeColor'] + '%')
+    # if formDataDictionary.get('img'):
+    #     dbCommand += " AND (Pets.img LIKE ? OR Pets.color LIKE '')"
+    #     substitutionSequence.append('%' + formDataDictionary['img'] + '%')
+    # if formDataDictionary.get('description'):
+    #     dbCommand += " AND (Pets.description LIKE ? OR Pets.description LIKE '')"
+    #     substitutionSequence.append('%' + formDataDictionary['description'])
+    if formDataDictionary.get('dateLost'):
+        dbCommand += " AND (Pets.dateLost LIKE ? OR Pets.dateLost LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['dateLost'] + '%')
+    data = db.pullLostData(dbCommand, substitutionSequence)
     return processDatabaseResponse(data)
     
 @app.route("/remove/")

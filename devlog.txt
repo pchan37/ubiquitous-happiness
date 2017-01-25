@@ -40,3 +40,5 @@ patrickC -- 2017-01-24 12:00 PM
        Did some refactoring to the codebase for a somewhat cleaner codebase
        Note: Need to "reset" the data rendered when user reset the form to original state       
 celineY - 2017-01-25 12:07:58 AM - Updated pet.html; maybe ayman won't like it
+aymanA - 2017-01-25 03:03:07 AM - started styling form
+celineY - 2017-01-25 03:39:55 PM - Fixing merge conflicts
