@@ -42,3 +42,4 @@ patrickC -- 2017-01-24 12:00 PM
 celineY - 2017-01-25 12:07:58 AM - Updated pet.html; maybe ayman won't like it
 aymanA - 2017-01-25 03:03:07 AM - started styling form
 celineY - 2017-01-25 03:39:55 PM - Fixing merge conflicts
+kevinZ -- 2017-01-25 03:52:18 PM - Modified found.js to adjust the appearance of the submit button.
