@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
+from json import loads
+from utils.utils import convertFormArrayToDict, processDatabaseResponse
 from utils.Database import Database
 
 app = Flask(__name__)
@@ -14,9 +16,9 @@ def home():
 @app.route("/found/")
 def found():
     if not db:
-        return redirect( url_for('home'))
+        return redirect(url_for('home'))
     data = db.pullFoundData("WHERE Pets.petID = ListOfPetsFound.petID")
-    return render_template("found.html", data = data)
+    return render_template("found.html", data=data)
 
 @app.route("/lost/")
 def lost():
@@ -24,47 +26,57 @@ def lost():
 
 @app.route("/pet/<petID>")
 def petInfo(petID):
-    data = db.pullFoundData("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsFound.petID" % (int(petID)))
+    if not db:
+        return redirect(url_for('home'))
+    data = db.pullFoundData("WHERE Pets.petID = ? AND Pets.petID = ListOfPetsFound.petID", [petID])
     if not data:
-        data = db.pullLostData("WHERE Pets.petID = %d AND Pets.petID = ListOfPetsLost.petID" % (int(petID)))
+        data = db.pullLostData("WHERE Pets.petID = ? AND Pets.petID = ListOfPetsLost.petID", [petID])
     if data:
         data = data[0];
-        return render_template("pet.html",  location = data['location'], petType = data['petType'], color = data['color'], eyeColor = data['eyeColor'], img = data['img'], description = data['description'], dateLost = data['dateLost'], petName = data['petName'])
+        return render_template("pet.html", data=data)
     else:
         return "petID not on record"
 
-@app.route("/updateFound/")
+@app.route("/updateFound/", methods=['POST'])
 def updateFound():
-    formData = request.args('formData');
-    print(formData);
-    string = "WHERE Pets.petID = ListOfPetsFound.petID"
-    if('location' in formData and formData['location'] != "" ):
-        string += " AND Pets.location = %s OR Pets.location = ''"%(formData['location'].lower());
-    if('petType' in formData and formData['petType'] != "" ):
-        string += " AND Pets.petType = %s OR Pets.petType = ''"%(formData['petType'].lower());
-    if('color' in formData and formData['color'] != "" ):
-        string += " AND Pets.color = %s OR Pets.color = ''"%(formData['color'].lower());
-    if('eyeColor' in formData and formData['eyeColor'] != "" ):
-        string += " AND Pets.eyeColor = %s OR Pets.eyeColor = ''"%(formData['eyeColor'].lower());
-    #if('img' in formData and formData['img'] != "" ):
-    #    string += " AND Pets.img = %s OR Pets.img != ''"%(formData['location']);
-    #if('description' in formData and formData['description'] != "" ):
-    #    string += " AND Pets.location = %s OR Pets.location != ''"%(formData['location']);
-    #if('dateLost' in formData and formData['dateLost'] != "" ):
-    #    string += " AND Pets.location = %s OR Pets.location != ''"%(formData['location']);
-    if('petName' in formData and formData['petName'] != "" ):
-        string += " AND Pets.petName = %s OR Pets.petName = ''"%(formData['petName'].lower());
-    data = db.pullFoundData(string);
-    return render_template("found.html", data = data, temp = formData);
+    formDataArray = loads(request.form.get('formData'))
+    formDataDictionary = convertFormArrayToDict(formDataArray)
+    dbCommand = "WHERE Pets.petID = ListOfPetsFound.petID"
+    substitutionSequence = []
+    if formDataDictionary.get('petName'):
+        dbCommand += " AND (Pets.petName LIKE ? OR Pets.petName LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['petName'] + '%')
+    if formDataDictionary.get('location'):
+        dbCommand += " AND (Pets.location LIKE ? OR Pets.location LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['location'] + '%')
+    if formDataDictionary.get('petType'):
+        dbCommand += " AND (Pets.petType LIKE ? OR Pets.petType LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['petType'] + '%')
+    if formDataDictionary.get('color'):
+        dbCommand += " AND (Pets.color LIKE ? OR Pets.color LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['color'] + '%')
+    if formDataDictionary.get('eyeColor'):
+        dbCommand += " AND (Pets.eyeColor LIKE ? OR Pets.eyeColor LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['eyeColor'] + '%')
+    # if formDataDictionary.get('img'):
+    #     dbCommand += " AND (Pets.img LIKE ? OR Pets.color LIKE '')"
+    #     substitutionSequence.append('%' + formDataDictionary['img'] + '%')
+    # if formDataDictionary.get('description'):
+    #     dbCommand += " AND (Pets.description LIKE ? OR Pets.description LIKE '')"
+    #     substitutionSequence.append('%' + formDataDictionary['description'])
+    if formDataDictionary.get('dateLost'):
+        dbCommand += " AND (Pets.dateLost LIKE ? OR Pets.dateLost LIKE '')"
+        substitutionSequence.append('%' + formDataDictionary['dateLost'] + '%')
+    data = db.pullFoundData(dbCommand, substitutionSequence)
+    return processDatabaseResponse(data)
     
-        
 @app.route("/remove/")
 def remove():
     global db
     db = Database(True)
     
-    
 if __name__ == "__main__":
     app.debug = True
+    app.url_map.strict_slashes = False
     db = None
     app.run(host='0.0.0.0')

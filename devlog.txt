@@ -1,3 +1,20 @@
+patrickC -- 2017-01-24 12:00 PM
+       Got the dateLost field to work
+       Fixed path to static content for all templates
+       Did some refactoring to the codebase for a somewhat cleaner codebase
+       Note: Need to "reset" the data rendered when user reset the form to original state
+patrickC -- 2017-01-24 11:00 AM
+       Managed to get the client-side to render new data (very hacky, need to pull thoughts from team)
+       Note: Need to rewrite the codebase (it's a huge mess right now)
+       Note: Need to "reset" the data rendered when user reset the form to original state
+patrickC -- 2017-01-24 09:50 AM
+       Fixed case-insensitive matching
+       Fixed fuzzy matching component (return data that starts with a 's' when you type 's')
+       Inserted parenthesis so that querying for multiple pieces of data works
+       Note: Need to refactor/rewrite the codebase (it's a huge mess right now)
+patrickC -- 2017-01-24 01:20 AM
+       Fixed bug with the communication between client and server
+       Need to fix the rendering of the new data along with fix the errors when retrieving data in columns other than name
 patrickC -- 2017-01-23 12:30 PM
        Started working on found.js, have an error to fix
 patrickC -- 2017-01-17 12:18 PM
