@@ -4,7 +4,7 @@ var $form = $('form'),
 var update = function(){
     //var input = document.getElementById(formData);
     var str = $( "form" ).serializeArray();
-    $.post("/updateFound/", {formData: JSON.stringify(str)}, function(response){
+    $.post("/updateLost/", {formData: JSON.stringify(str)}, function(response){
         console.log(response);
         var formContent = document.getElementsByClassName('contentData');
         formContent[0].innerHTML = response;
@@ -13,21 +13,8 @@ var update = function(){
     
 };
 
-var checkSubmission = function(){
-    var contentData = document.getElementsByClassName('dataObject');
-    if( contentData.length > 1){
-        $('#submitData').attr('disabled', 'disabled');
-    }else{
-        $('#submitData').removeAttr('disabled');
-    }
-};
-
-
-
 $('form :input').on('change input', function(){
-    update();
-    checkSubmission();
+    update();                
 });
-
 
 
