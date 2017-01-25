@@ -73,6 +73,16 @@ def updateFound():
     data = db.pullFoundData(dbCommand, substitutionSequence)
     return processDatabaseResponse(data)
 
+@app.route("/submitFound/", methods=['POST'])
+def submitFound():
+    formData = request.form
+    return render_template("confirm.html", data=formData, hidden="Found")
+
+@app.route("/addFound/", methods=['POST'])
+def addFound():
+    formData = request.form.get('formData')
+    
+
 @app.route("/updateLost/", methods=['POST'])
 def updateLost():
     formDataArray = loads(request.form.get('formData'))
