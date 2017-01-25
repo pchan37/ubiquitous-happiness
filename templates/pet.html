@@ -1,60 +1,58 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-      <title>Pet Page</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- Font Awesome -->
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <!-- Bootstrap Notify -->
-  <link rel="stylesheet" type="text/css" href="static/bootstrap-notify/css/bootstrap-notify.css">
-  <link rel="stylesheet" type="text/css" href="static/bootstrap-notify/css/styles/alert-bangtidy.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300|Source+Sans+Pro:300|Source+Serif+Pro" rel="stylesheet">
-  <!-- My Styles -->
-  <link rel="stylesheet" type="text/css" href="../static/style.css">
-  </head>
-  <body>
-    <div class="container"> 
-    <div class="col-md-9">
-    <h2>{{petName}}'s Information</h2>
-    <ul>
-      {% if img != "" %}
-      <b>Picture: </b><br><img url="{{img}}"> <br>
-      {% endif %}
-      {% if location != "" %}
-      <b>Location: </b>{{location}} <br>
-      {% endif %}
-      {% if petType != "" %}
-      <b>Species: </b>{{petType}} <br>
-      {% endif %}
-      {% if color != "" %}
-      <b>Color: </b>{{color}} <br>
-      {% endif %}
-      {% if eyeColor != "" %}
-      <b>Eye Color:</b>{{eyeColor}} <br>
-      {% endif %}
-      {% if description != "" %}
-      <b>Description: </b>{{description}} <br>
-      {% endif %}
-      {% if petName != "" %}
-      <b>Pet Name: </b>{{petName}}<br>
-      {% endif %}
-    </ul>
-    </div> 
-    <div class="col-md-3">
-      <h3> Contact Info </h3> <br>
-      Email:
-    </div>
-    </div>
+<head>
+	<title>Pet Page</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Font Awesome -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<!-- Bootstrap Notify -->
+	<link rel="stylesheet" type="text/css" href="static/bootstrap-notify/css/bootstrap-notify.css">
+	<link rel="stylesheet" type="text/css" href="static/bootstrap-notify/css/styles/alert-bangtidy.css">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300|Source+Sans+Pro:300|Source+Serif+Pro" rel="stylesheet">
+	<!-- My Styles -->
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+	<div class="row" style="height: 100%"> 
+		<div class="col-md-6">
+			<h2>{{petName}}'s Information</h2>
+			<ul class="pet-info">
+				{% if location != "" %}
+				<li><b>Location: </b>{{location}} <br></li>
+				{% endif %}
+				{% if petType != "" %}
+				<li><b>Species: </b>{{petType}} <br></li>
+				{% endif %}
+				{% if color != "" %}
+				<li><b>Color: </b>{{color}} <br></li>
+				{% endif %}
+				{% if eyeColor != "" %}
+				<li><b>Eye Color:</b>{{eyeColor}} <br></li>
+				{% endif %}
+				{% if description != "" %}
+				<li><b>Description: </b>{{description}} <br></li>
+				{% endif %}
+				{% if petName != "" %}
+				<li><b>Pet Name: </b>{{petName}}<br></li>
+				{% endif %}
+			</ul>
+		</div> 
+		<div class="col-md-6">
+			{% if img != "" %}
+			<img src={{img}} alt="Pet Image" class="pet-image">
+			{% endif %}
+		</div>
+	</div>
 
-  <!-- Jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-  <!-- Bootstrap -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <!-- Bootstrap Notify -->
-  <script src="static/bootstrap-notify/js/bootstrap-notify.js"></script>
-  
-  </body>
+	<!-- Jquery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- Bootstrap Notify -->
+	<script src="static/bootstrap-notify/js/bootstrap-notify.js"></script>
+
+</body>
 </html>
 
