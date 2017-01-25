@@ -5,16 +5,17 @@
   <div class="contentForm">
     <p>Modify the original form to meet your specifications</p>
     <form id="formData" action="/add{{hidden}}/" method="POST">
-      <b>Pet Name:</b><input type="text" name="petName" id="petName" value="{{data['petName']}}" class="formInput"></input><br>
-      <b>Where:</b><input type="text" name="location" id="location" class="formInput" value="{{data['location']}}"></input><br>
-      <b>Date {{hidden}}:</b><input type="date" name="dateLost" id="dateLost" class="formInput" values="{{data['dateLost']}}"></input><br>
-      <b>Color:</b><input type="text" name="color" id="color" class="formInput" value="{{data['color']}}"></input><br>
-      <b>Eye Color:</b><input type="text" name="eyeColor" id="eyeColor" class="formInput" value="{{data['eyeColor']}}"></input><br>
-      <b>Type of Pet:</b><input type="text" name="petType" id="petType" class="formInput"></input><br>
+      <b>Pet Name: </b><input type="text" name="petName" id="petName" value="{{data['petName']}}" class="formInput"></input><br>
+      <b>Where: </b><input type="text" name="location" id="location" class="formInput" value="{{data['location']}}"></input><br>
+      <b>Date {{hidden}}: </b><input type="date" name="dateLost" id="dateLost" class="formInput" values="{{data['dateLost']}}"></input><br>
+      <b>Color: </b><input type="text" name="color" id="color" class="formInput" value="{{data['color']}}"></input><br>
+      <b>Eye Color: </b><input type="text" name="eyeColor" id="eyeColor" class="formInput" value="{{data['eyeColor']}}"></input><br>
+      <b>Type of Pet: </b><input type="text" name="petType" id="petType" class="formInput"></input><br>
       <hr>
       <p>Please add the following additional details</p>
-      <b>Email:</b><input type="text" name="email" id="email" class="formInput" required></input><br>
-      <b>Confirm Email</b><input type="text" name="confirmEmail" id="confirmEmail" class="formInput" required></input><br>
+      <b>Email: </b><input type="text" name="email" id="email" class="formInput" required></input><br>
+      <b>Confirm Email: </b><input type="text" name="confirmEmail" id="confirmEmail" class="formInput" required></input><br>
+      <b>Additional Description: </b><input type="text" name="description" id="description" class="formInput"></input><br>
       <b>Upload Image</b><!-- Put Image Upload Here --><input type="hidden" value="" name="imgURL" id="imgURL"></input><br>
       <input type="submit" id="submitData" class="formInput"></input><br>
     </form>

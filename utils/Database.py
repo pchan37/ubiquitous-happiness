@@ -57,6 +57,10 @@ class Database:
         data = self.cursor.fetchall()
         return data
 
+    def countPets(self):
+        dbCommand = "SELECT Count(*) FROM Pets;"
+        return self.cursor.execute(dbCommand)
+
     def addPet(self, petData, userInfo):
         '''
         petData is a dictionary with non-empty fields (fill with "" if necessary)

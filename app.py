@@ -4,14 +4,17 @@ from utils.utils import convertFormArrayToDict, processDatabaseResponse
 from utils.Database import Database
 
 app = Flask(__name__)
+petCount = 0
 
 #this one will have notifications and such via javascript
 @app.route("/")
-def home():
+def home(message=None):
     global db
     if not db:
         db = Database()
-    return render_template("home.html")
+    global petCount
+    petCount = db.countPets()
+    return render_template("home.html", message=message)
 
 @app.route("/found/")
 def found():
@@ -80,8 +83,24 @@ def submitFound():
 
 @app.route("/addFound/", methods=['POST'])
 def addFound():
-    formData = request.form.get('formData')
-    
+    formData = request.form
+    petData = {}
+    petData['petName'] = formData['petName']
+    petData['location'] = formData['location']
+    petData['dateLost'] = formData['dateLost']
+    petData['color'] = formData['color']
+    petData['eyeColor'] = formData['eyeColor']
+    petData['petType'] = formData['petType']
+    petData['img'] = formData['imgURL']
+    petData['description'] = formData['description']
+    global petCount;
+    petData['petID'] = petCount+1;
+    petCount += 1;
+    userInfo = {}
+    userInfo['founderEmail'] = formData['email']
+    db.addPet( petData, userInfo )
+    return redirect(url_for("home", message="Success!" ) )
+
 
 @app.route("/updateLost/", methods=['POST'])
 def updateLost():

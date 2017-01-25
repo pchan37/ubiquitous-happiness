@@ -44,3 +44,4 @@ aymanA - 2017-01-25 03:03:07 AM - started styling form
 celineY - 2017-01-25 03:39:55 PM - Fixing merge conflicts
 kevinZ -- 2017-01-25 03:52:18 PM - Modified found.js to adjust the appearance of the submit button.
 kevinZ -- 2017-01-25 04:44:29 PM - Created confirm.html, which allows the user to add more information to their filled out form.
+kevinZ -- 2017-01-25 05:22:56 PM - Progressing into the route /addFound/
