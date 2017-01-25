@@ -1,41 +1,41 @@
-patrickC -- 2017-01-24 12:00 PM
-       Got the dateLost field to work
-       Fixed path to static content for all templates
-       Did some refactoring to the codebase for a somewhat cleaner codebase
-       Note: Need to "reset" the data rendered when user reset the form to original state
-patrickC -- 2017-01-24 11:00 AM
-       Managed to get the client-side to render new data (very hacky, need to pull thoughts from team)
-       Note: Need to rewrite the codebase (it's a huge mess right now)
-       Note: Need to "reset" the data rendered when user reset the form to original state
-patrickC -- 2017-01-24 09:50 AM
-       Fixed case-insensitive matching
-       Fixed fuzzy matching component (return data that starts with a 's' when you type 's')
-       Inserted parenthesis so that querying for multiple pieces of data works
-       Note: Need to refactor/rewrite the codebase (it's a huge mess right now)
-patrickC -- 2017-01-24 01:20 AM
-       Fixed bug with the communication between client and server
-       Need to fix the rendering of the new data along with fix the errors when retrieving data in columns other than name
-patrickC -- 2017-01-23 12:30 PM
-       Started working on found.js, have an error to fix
-patrickC -- 2017-01-17 12:18 PM
-       Modified app.py to use one database connection per user
-patrickC -- 2017-01-13 12:14 PM
-       Added database initialization to database.py
-patrickC -- 2017-01-13 10:15 AM
-       Refactored initialization of database in database.pyf
-       Reorganized database.py
 kevinZ -- 2017-01-09 12:33 PM
        Started work on database.py
 kevinZ -- 2017-01-09 10:41 PM
        Finished several functions in database.py. Not sure what else will be needed, although there will probably be more additions in the future.
+patrickC -- 2017-01-13 10:15 AM
+       Refactored initialization of database in database.pyf
+       Reorganized database.py
+patrickC -- 2017-01-13 12:14 PM
+       Added database initialization to database.py
 aymanA - 2017-01-13 12:16:53 PM - __init__
 kevinZ -- 2017-01-12 2:37 PM
        Worked on pet route. It is now working, so there is no more need to do some db fixing. I just need Celine to do some CSS magic now.
 kevinZ -- 2017-01-14 7:55 PM
        Fixed the issue with Pets table not being created. It was because the command was not being executed.
 aymanA - 2017-01-16 07:57:49 PM - added new cover page
+patrickC -- 2017-01-17 12:18 PM
+       Modified app.py to use one database connection per user
 kevinZ -- 2017-01-18 12:22:36 PM - Created base.html
 kevinZ -- 2017-01-18 03:19:30 PM - Worked on found.html and base.html
 kevinZ -- 2017-01-20 08:02:18 AM - Added another entry to db
 kevinZ -- 2017-01-22 09:25:20 PM - Finished up found.html. May need to make some modifications in the future.
 celineY - 2017-01-23 12:09:59 PM - some more work added
+patrickC -- 2017-01-23 12:30 PM
+       Started working on found.js, have an error to fix
+patrickC -- 2017-01-24 01:20 AM
+       Fixed bug with the communication between client and server
+patrickC -- 2017-01-24 09:50 AM
+       Fixed case-insensitive matching
+       Fixed fuzzy matching component (return data that starts with a 's' when you type 's')
+       Inserted parenthesis so that querying for multiple pieces of data works
+       Note: Need to refactor/rewrite the codebase (it's a huge mess right now)
+       Need to fix the rendering of the new data along with fix the errors when retrieving data in columns other than name
+patrickC -- 2017-01-24 11:00 AM
+       Managed to get the client-side to render new data (very hacky, need to pull thoughts from team)
+       Note: Need to rewrite the codebase (it's a huge mess right now)
+       Note: Need to "reset" the data rendered when user reset the form to original state
+patrickC -- 2017-01-24 12:00 PM
+       Got the dateLost field to work
+       Fixed path to static content for all templates
+       Did some refactoring to the codebase for a somewhat cleaner codebase
+       Note: Need to "reset" the data rendered when user reset the form to original state       
