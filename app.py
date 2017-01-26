@@ -57,7 +57,7 @@ def uploadImage():
     if file and allowed_file(file.filename):
         filename = secure_filename("%d.%s"%(db.generateNextPetID(), file.filename.rsplit('.',1)[1].lower()))
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return filename
+        return UPLOAD_FOLDER + filename
     else:
         return ""
 
