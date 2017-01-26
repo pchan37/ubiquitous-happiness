@@ -2,23 +2,25 @@
 {% block title %}Lost A Pet{% endblock %}
 {% block content %}
     <div class="page-panel">
+        <a href="/" class="back-button"><i class="fa fa-arrow-left fa-4x"></i></a>
+        <h1 class="cover-heading-dark">Lost a Pet</h1><br>
+        <p style="text-align: center">Let us help you find your pet - this list updates as you enter information.</p><br><br>
         <div class="contentForm">
-            <p>Fill out form to narrow results</p>
             <form id="formData" action="/submitLost/" method="POST">
-                <b>Pet Name:</b><input type="text" name="petName" id="petName" class="formInput"></input><br>
-                <b>Where:</b><input type="text" name="location" id="location" class="formInput"></input><br>
-                <b>Date Lost:</b><input type="text" name="dateLost" id="dateLost" class="formInput" placeholder="MM/DD/YYYY"></input><br>
-                <b>Color:</b><input type="text" name="color" id="color" class="formInput"></input><br>
-                <b>Eye Color:</b><input type="text" name="eyeColor" id="eyeColor" class="formInput"></input><br>
-                <b>Type of Pet:</b><input type="text" name="petType" id="petType" class="formInput"></input><br>
+                <input type="text" name="petName" id="petName" placeholder="What is the name of your pet?" class="formInput"></input><br><br>
+                <input type="text" name="location" id="location" placeholder="Where did you last see your pet?" class="formInput"></input><br><br>
+                <input type="date" name="dateLost" id="dateLost" placeholder="When was the last time you saw your pet?" class="formInput"></input><br><br>
+                <input type="text" name="color" id="color" placeholder="What color is your pet?" class="formInput"></input><br><br>
+                <input type="text" name="eyeColor" id="eyeColor" placeholder="What is the eye color of your pet?" class="formInput"></input><br><br>
+                <input type="text" name="petType" id="petType" placeholder="What species is your pet?" class="formInput"></input><br><br>
                 <input type="submit" id="submitData" class="formInput"></input><br>
             </form>
         </div>
-        <div class="contentData row">
+        <div class="form-hr"><hr></div>
+        <div class="contentData row" style="padding-top: 0">
             {% for d in data %}
                 <div class="dataObject cardDiv drop-shadow col-sm-3">
-                    <!-- <img src="{{d['img']}}" alt="IMAGE NOT FOUND" height="250px" width="250px"> -->
-                    <img class="cardImage" src="http://static.boredpanda.com/blog/wp-content/uploads/2016/06/gorilla-shot-boy-zookeper-explains-harambe-amanda-odonoughue-cincinnati-zoo-1.jpg" alt="IMAGE NOT FOUND" onerror="this.onerror=null;this.src='../static/images/placeholder.png';">
+                    <img class="cardImage" src="{{d['img']}}" alt="IMAGE NOT FOUND" onerror="this.onerror=null;this.src='../static/images/placeholder.png';">
                     <ul class="cardList">
                         <li><b>Name: </b>{{d['petName']}}</li>
                         <li><b>Type: </b>{{d['petType']}}</li>

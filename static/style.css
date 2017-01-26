@@ -174,6 +174,14 @@ tr:hover {background-color: #f5f5f5}
 	font-weight: 100;
 }
 
+.cover-heading-dark {
+	text-align: center;
+	color: #000;
+	font-family: "Source Sans Pro";
+	font-size: 6em;
+	font-weight: 100;
+}
+
 .cover-link {
 	border-radius: 15px;
 	border: 1px solid #FFF;
@@ -186,6 +194,28 @@ tr:hover {background-color: #f5f5f5}
 	padding-right: 20px;
 	padding-top: 10px;
 	text-decoration: none !important;
+}
+
+.back-button {
+	position: absolute;
+	left: 1%;
+	top: 1.5%;
+	color: #3C4858;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+	.back-button {
+		position: static;
+	}
+	.cover-heading-dark {
+		margin-top: 0px;
+	}
+}
+
+.back-button:hover {
+	color: #3C4858;
+	opacity: 0.5;
 }
 
 .cover-link-dark {
@@ -212,6 +242,111 @@ tr:hover {background-color: #f5f5f5}
 	background-color: rgba(0, 0, 0, 0.4);
 	color: white;
 	transition: 0.3s background-color;
+}
+
+.contentForm {
+	text-align: center;
+}
+
+.formInput {
+	text-align: left;
+	width: 30%;
+	height: 2em;
+	border: none;
+	border-bottom: 2px solid #3C4858;
+}
+
+.formInput:focus {
+	height: 3em;
+	width: 30%;
+	outline: none;
+	transition: 0.3s border-bottom;
+	border-bottom: 3px solid rgba(60, 72, 87, 0.75);
+}
+
+@media screen and (max-width: 768px) {
+	.formInput {
+		width: 90%;
+	}
+}
+
+::-webkit-input-placeholder { /* Chrome */
+	color: #3C4858;
+}
+:focus::-webkit-input-placeholder {
+	transition: 0.3s opacity;
+	opacity: 0.9;
+}
+:-ms-input-placeholder { /* IE 10+ */
+	color: #3C4858;
+}
+:focus:-ms-input-placeholder {
+	transition: 0.3s opacity;
+	opacity: 0.9;
+}
+::-moz-placeholder { /* Firefox 19+ */
+	color: #3C4858;
+	opacity: 1;
+}
+:focus::-moz-placeholder {
+	transition: 0.3s opacity;
+	opacity: 0.9;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+	color: #3C4858;
+	opacity: 1;
+}
+:focus:-moz-placeholder {
+	transition: 0.3s opacity;
+	opacity: 0.9;
+}
+
+#submitData {
+	width: 20%;
+	height: 2.75em !important;
+	max-height: 3em;
+	border: 2px solid transparent;
+	font-size: 1.25em;
+	border-radius: 25px;
+	margin: 2.5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 3%;
+	padding-right: 3%;
+	text-decoration: none !important;
+	background-color: #3C4858;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+#submitData:hover {
+	transition: 0.3s border;
+	border: 2px solid #3C4858;
+	transition: 0.3s color;
+	color: #3C4858;
+	background-color: #FFF;
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+}
+
+@media screen and (max-width: 768px) {
+	#submitData {
+		width: 50%;
+	}
+}
+
+.form-hr {
+	width: 50%;
+	text-align: center;
+	margin: 0 auto;
+	padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+	.form-hr {
+		width: 75%;
+	}
 }
 
 .contentData {
