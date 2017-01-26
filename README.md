@@ -8,7 +8,7 @@
 
 **Instructions**
 
-[Instructional Video]: https://www.google.com/	"Instructional Video"
+[Instructional Video]: https://youtu.be/oY_i_WlT1h8	"Instructional Video"
 
 1. Begin by running `python app.py` in the terminal. Go to the url `127.0.0.1:5000/` in your browser to get to the homepage
 2. Decide whether you have found a pet, or lost a pet. Pick the appropriate option on the homepage
