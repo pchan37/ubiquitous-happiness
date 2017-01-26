@@ -24,8 +24,8 @@ def found():
 def lost():
     if not db:
         return redirect(url_for('home'))
-    data = db.pullLostData("WHERE Pets.petID = ListOfPetsLost.petID")
-    return render_template("lost.html")
+    data = db.pullFoundData("WHERE Pets.petID = ListOfPetsFound.petID")
+    return render_template("lost.html", data = data)
 
 @app.route("/pet/<petID>")
 def petInfo(petID):
@@ -36,7 +36,12 @@ def petInfo(petID):
         data = db.pullLostData("WHERE Pets.petID = ? AND Pets.petID = ListOfPetsLost.petID", [petID])
     if data:
         data = data[0];
-        return render_template("pet.html", data = data)
+        if 'founderName' in data:            
+            return render_template("pet.html", data = data, hidden = "Found" )
+        elif 'ownerName' in data:
+            return render_template("pet.html", data = data, hidden = "Lost" )
+        else:
+            return "done fucked"
     else:
         return "petID not on record"
 
@@ -94,6 +99,7 @@ def addFound():
     petData['petID'] = db.generateNextPetID()
     userInfo = {}
     userInfo['founderEmail'] = formData['email']
+    userInfo['founderName'] = formData['name']
     db.addPet( petData, userInfo )
     return redirect(url_for("home", message="Success!" ) )
 
@@ -102,7 +108,7 @@ def addFound():
 def updateLost():
     formDataArray = loads(request.form.get('formData'))
     formDataDictionary = convertFormArrayToDict(formDataArray)
-    dbCommand = "WHERE Pets.petID = ListOfPetsLost.petID"
+    dbCommand = "WHERE Pets.petID = ListOfPetsFound.petID"
     substitutionSequence = []
     if formDataDictionary.get('petName'):
         dbCommand += " AND (Pets.petName LIKE ? OR Pets.petName LIKE '')"
@@ -128,7 +134,7 @@ def updateLost():
     if formDataDictionary.get('dateLost'):
         dbCommand += " AND (Pets.dateLost LIKE ? OR Pets.dateLost LIKE '')"
         substitutionSequence.append('%' + formDataDictionary['dateLost'] + '%')
-    data = db.pullLostData(dbCommand, substitutionSequence)
+    data = db.pullFoundData(dbCommand, substitutionSequence)
     return processDatabaseResponse(data)
     
 @app.route("/remove/")

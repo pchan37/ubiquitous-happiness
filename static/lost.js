@@ -13,8 +13,22 @@ var update = function(){
     
 };
 
+var checkSubmission = function(){
+    var contentData = document.getElementsByClassName('dataObject');
+    console.log(contentData);
+    if( contentData.length < 5){
+        $('#submitData').removeAttr('disabled');
+    }else{
+        $('#submitData').attr('disabled','disabled');
+    }
+};
+
+
+
 $('form :input').on('change input', function(){
-    update();                
+    update();
+    checkSubmission();
 });
+
 
 

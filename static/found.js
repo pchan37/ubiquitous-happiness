@@ -15,7 +15,8 @@ var update = function(){
 
 var checkSubmission = function(){
     var contentData = document.getElementsByClassName('dataObject');
-    if( contentData.length > 1){
+    console.log(contentData);
+    if( contentData.length < 5){
         $('#submitData').removeAttr('disabled');
     }else{
         $('#submitData').attr('disabled','disabled');

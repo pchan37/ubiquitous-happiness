@@ -61,8 +61,11 @@ class Database:
         dbCommand = "SELECT * FROM Pets ORDER BY petID DESC LIMIT 1;"        
         self.cursor.execute(dbCommand)
         lastID = self.cursor.fetchall()
-        return lastID[0]['petID'] + 1
-        
+        if len(lastID) != 0 :
+            return lastID[0]['petID'] + 1
+        else:
+            return 0
+    
     def addPet(self, petData, userInfo):
         '''
         petData is a dictionary with non-empty fields (fill with "" if necessary)
@@ -71,10 +74,10 @@ class Database:
         dbCommand = "INSERT INTO Pets VALUES (%d, \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")"%(petData['petID'], petData['location'], petData['petType'], petData['color'], petData['eyeColor'], petData['img'], petData['description'], petData['dateLost'], petData['petName'])
         self.cursor.execute(dbCommand)
         if 'ownerEmail' in userInfo:
-            dbCommand = "INSERT INTO ListOfPetsLost VALUES (%d, \"%s\")"%(petData['petID'], userInfo['ownerName'], userInfo['ownerEmail'])
+            dbCommand = "INSERT INTO ListOfPetsLost VALUES (%d, \"%s\", \"%s\")"%(petData['petID'], userInfo['ownerName'], userInfo['ownerEmail'])
             self.cursor.execute(dbCommand)
         elif 'founderEmail' in userInfo:
-            dbCommand = "INSERT INTO ListOfPetsFound VALUES (%d, \"%s\")"%(petData['petID'], userInfo['founderName'], userInfo['founderEmail'])
+            dbCommand = "INSERT INTO ListOfPetsFound VALUES (%d, \"%s\", \"%s\")"%(petData['petID'], userInfo['founderName'], userInfo['founderEmail'])
             self.cursor.execute(dbCommand)
         self.db.commit()
 
