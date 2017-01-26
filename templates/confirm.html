@@ -2,22 +2,24 @@
 {% block title %}Confirm Your Information{% endblock %}
 {% block content %}
 <div class="page-panel">
-  <div class="contentForm">
-    <p>Modify the original form to meet your specifications</p>
+  <a href={{ back }} class="back-button"><i class="fa fa-arrow-left fa-4x"></i></a>
+        <h1 class="cover-heading-dark" style="font-size: 4em">Confirm Your Information</h1><br>
+        <p style="text-align: center">Take time to look over the information you entered, and give people a way to contact you if {% if back == "/lost/" %}they may have found your pet. {% else %}they think you may have their pet.{% endif %}</p><br><br>
+  <div class="contentForm filled-contentForm">
     <form id="formData" action="/add{{hidden}}/" method="POST" enctype=multipart/form-data>
-      <b>Pet Name: </b><input type="text" name="petName" id="petName" value="{{data['petName']}}" class="formInput"></input><br>
-      <b>Where: </b><input type="text" name="location" id="location" class="formInput" value="{{data['location']}}"></input><br>
-      <b>Date {{hidden}}: </b><input type="text" name="dateLost" id="dateLost" class="formInput" value="{{data['dateLost']}}"></input><br>
-      <b>Color: </b><input type="text" name="color" id="color" class="formInput" value="{{data['color']}}"></input><br>
-      <b>Eye Color: </b><input type="text" name="eyeColor" id="eyeColor" class="formInput" value="{{data['eyeColor']}}"></input><br>
-      <b>Species: </b><input type="text" name="petType" id="petType" class="formInput" value="{{data['petType']}}"></input><br>
-      <hr>
-      <p>Please add the following additional details</p>
-      <b>Name: </b><input type="text" name="name" id="name" class="formInput" required></input><br>
-      <b>Email: </b><input type="text" name="email" id="email" class="formInput" required></input><br>
-      <b>Confirm Email: </b><input type="text" name="confirmEmail" id="confirmEmail" class="formInput" required></input><br>
-      <b>Additional Description: </b><input type="text" name="description" id="description" class="formInput"></input><br>
-      <b>Upload Image :</b><input type="file" name="fileUpload" id="fileUpload">
+      <b>Name: </b><input type="text" name="petName" id="petName" value="{{data['petName']}}" class="formInput"></input><br><br>
+      <b>Location: </b><input type="text" name="location" id="location" class="formInput" value="{{data['location']}}"></input><br><br>
+      <b>Date {{hidden}}: </b><input type="text" name="dateLost" id="dateLost" class="formInput" value="{{data['dateLost']}}"></input><br><br>
+      <b>Color: </b><input type="text" name="color" id="color" class="formInput" value="{{data['color']}}"></input><br><br>
+      <b>Eye Color: </b><input type="text" name="eyeColor" id="eyeColor" class="formInput" value="{{data['eyeColor']}}"></input><br><br>
+      <b>Species: </b><input type="text" name="petType" id="petType" class="formInput" value="{{data['petType']}}"></input><br><br>
+      <div class="form-hr"><hr></div>
+      <h1 class="cover-heading-dark" style="font-size: 4em">Additional Details</h1><br>
+      <input type="text" name="name" id="name" placeholder="Your Name" class="formInput" required></input><br><br>
+      <input type="email" name="email" id="email" placeholder="Your Email" class="formInput" required></input><br><br>
+      <input type="email" name="confirmEmail" id="confirmEmail" placeholder="Confirm Your Email" class="formInput" required></input><br><br>
+      <input type="text" name="description" id="description" placeholder="Additional Description" class="formInput"></input><br><br>
+      <b>Image of the Pet :</b><input type="file" name="fileUpload" id="fileUpload">
       <input type="hidden" value="" name="imgURL" id="imgURL"></input><br>
       <input type="submit" id="submitData" class="formInput"></input><br>
     </form>
