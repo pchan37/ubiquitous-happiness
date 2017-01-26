@@ -89,6 +89,7 @@
      <a href="/found/" class="cover-link-dark">Back to Previous Page</a>
      {% endif %}
      <a href="/" class="cover-link-dark">Back to Home</a>
+     
       </div>
 
       <!-- RIGHT SIDE -->
@@ -104,8 +105,11 @@
           {{data['founderEmail']}}
           {% else %}
           {{data['ownerEmail']}}
-          {% endif %}         
-      </div>
+        {% endif %}
+        <textarea id="holdtext" style="display:none"></textarea>
+        <button id="claim" class="cover-link-dark" onClick="ClipBoard();">Claim Pet</button>
+    </div>
+    
     </div>
       
     <!-- Jquery -->
@@ -114,6 +118,35 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <!-- Bootstrap Notify -->
   <script src="../static/bootstrap-notify/js/bootstrap-notify.js"></script>
+  <script language="JavaScript">
+    var clipboard = function(){
+    if( {{hidden}} == "Found" ){
+    var postData = {};
+    postData['hidden'] = "Found";
+    postData['email'] = {{data['founderEmail']}};
+    postData['name'] = {{data['founderName']}};
+    $.post("/claimPet/{{data['petID']}}", { data: postData}, function(response){
+    console.log(response);
+    holdtext.innerText = {{data['founderEmail']}};
+    Copied = holdtext.createTextRange();
+    Copied.execCommand("Copy");
+    })
+    }else{
+    var postData = {};
+    postData['hidden'] = "Lost";
+    postData['email'] = {{data['ownerEmail']}};
+    postData['name'] = {{data['ownerName']}};
+    $.post("/claimPet/{{data['petID']}}", { data: postData}, function(response){
+    console.log(response);
+    holdtext.innerText = {{data['ownerEmail']}};
+    Copied = holdtext.createTextRange();
+    Copied.execCommand("Copy");
+    })
+    }
+    };
 
+    document.getElementById('claim').addEventListener('onclick', clipboard());
+  </script>
+  
     </body>
 </html>

@@ -181,6 +181,10 @@ def addLost():
     db.addPet( petData, userInfo )
     return redirect(url_for("home", message="Success!" ) )
 
+@app.route("/claimPet/<petID>")
+def claimPet(petID):
+    db.removePet(petID);
+        
 
 @app.route("/remove/")
 def remove():
