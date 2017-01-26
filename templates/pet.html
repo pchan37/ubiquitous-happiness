@@ -1,46 +1,46 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-	<title>Pet Page</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!-- Font Awesome -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-	<!-- Bootstrap Notify -->
-	<link rel="stylesheet" type="text/css" href="../static/bootstrap-notify/css/bootstrap-notify.css">
-	<link rel="stylesheet" type="text/css" href="../static/bootstrap-notify/css/styles/alert-bangtidy.css">
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Raleway:300|Source+Sans+Pro:300|Source+Serif+Pro" rel="stylesheet">
-	<!-- My Styles -->
-	<link rel="stylesheet" type="text/css" href="../static/style.css">
+  <title>Pet Page</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <!-- Bootstrap Notify -->
+  <link rel="stylesheet" type="text/css" href="../static/bootstrap-notify/css/bootstrap-notify.css">
+  <link rel="stylesheet" type="text/css" href="../static/bootstrap-notify/css/styles/alert-bangtidy.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300|Source+Sans+Pro:300|Source+Serif+Pro" rel="stylesheet">
+  <!-- My Styles -->
+  <link rel="stylesheet" type="text/css" href="../static/style.css">
 
     </head>
 
 
     <body>
 
-	<div class="container">
+  <div class="container">
 
       <!-- LEFT SIDE -->
-	    <div class="col-md-9">
+      <div class="col-md-9">
       <div style="height: 3em"></div>
       
       {% if data['petName'] != "" %}
-		    <h2>{{data['petName']}}'s Information</h2>
+        <h2>{{data['petName']}}'s Information</h2>
       {% else %}
         <h2>Unnamed Pet Information</h2>
       {% endif %}
 
-		  <div style="height: 1em"></div>
+      <div style="height: 1em"></div>
 
       {% if data['description'] != "" %}
         {{data['description']}} <br> <br>
       {% endif %}
 
       pic goes here 
-		    {% if data['img'] != "" %}
-			<b>Picture: </b><br><img url="{{data['img']}}"> <br>
-		    {% endif %}
+        {% if data['img'] != "" %}
+      <b>Picture: </b><br><img url="{{data['img']}}"> <br>
+        {% endif %}
       <div style="height: 1em"></div>
 
         <table>
@@ -50,8 +50,8 @@
             <col style="width:80%">
           </colgroup>  
 
-		    {% if data['location'] != "" %}
-			   <tr>
+        {% if data['location'] != "" %}
+         <tr>
           <td><b>Location</b></td>
           <td> {{data['location']}} <br> </td>
         </tr>
@@ -77,36 +77,39 @@
           <td> {{data['eyeColor']}} <br> </td>
         </tr>
         {% endif %}
-		
+    
       </table>
      <div style="height: 4em"></div>
-      <a href="/" class="cover-link-dark">Back to Home</a>
+     <!--
+     <a href="/" class="cover-link-dark">Back to {{hidden}}</a>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+     <a href="/" class="cover-link-dark">Back to Home</a>
 
-	    </div>
+      </div>
 
       <!-- RIGHT SIDE -->
-	  <div class="col-md-3 vertical_divider">
+    <div class="col-md-3 vertical_divider">
         <div style="height: 3em"></div>
-	      <h3> Contact Info </h3> <br>
+        <h3> Contact Info </h3> <br>
           Name: {% if hidden == "Found" %}
           {{data['founderName']}}
           {% else %}
           {{data['ownerName']}}
           {% endif %}<br>
-	      Email: {% if hidden == "Found" %}
+        Email: {% if hidden == "Found" %}
           {{data['founderEmail']}}
           {% else %}
           {{data['ownerEmail']}}
           {% endif %}         
-	    </div>
-	  </div>
+      </div>
+    </div>
       
-	  <!-- Jquery -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-	<!-- Bootstrap -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<!-- Bootstrap Notify -->
-	<script src="../static/bootstrap-notify/js/bootstrap-notify.js"></script>
+    <!-- Jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Bootstrap Notify -->
+  <script src="../static/bootstrap-notify/js/bootstrap-notify.js"></script>
 
     </body>
 </html>
