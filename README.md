@@ -22,6 +22,13 @@
 Known Bugs:
 
 - Going back from ```/pet/``` to ```/lost/``` or ```/found/``` clears out the previous form
+- Currently, the claimPet button does not work as intended. The email is not being copied to clipboard, and the pet is not getting removed from the database.
+
+Changes to Design:
+
+- Added a separate table for pet information. Since this data ( petName, location, etc. ) is shared by both ListOfPetsLost and ListOfPetsFound, we split it off, and linked the tables through the use of a new entry ( petID ).
+- Added an additional page ( confirm.html ), which allows the user to add personal details in addition to the form details filled out on the page prior. 
+- Included image uploading for if the user wants to upload images.
 
 <hr>
 
