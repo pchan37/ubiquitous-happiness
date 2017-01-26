@@ -50,3 +50,4 @@ kevinZ -- 2017-01-26 12:21 AM
        Added confirm.js
        Got pet.html to display properly
 aymanA - 2017-01-26 12:56:50 AM - added cards styling for lost.html / found.html
+aymanA - 2017-01-26 03:01:45 AM - updated utils for css classes
