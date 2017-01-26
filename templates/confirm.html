@@ -7,10 +7,10 @@
     <form id="formData" action="/add{{hidden}}/" method="POST" enctype=multipart/form-data>
       <b>Pet Name: </b><input type="text" name="petName" id="petName" value="{{data['petName']}}" class="formInput"></input><br>
       <b>Where: </b><input type="text" name="location" id="location" class="formInput" value="{{data['location']}}"></input><br>
-      <b>Date {{hidden}}: </b><input type="date" name="dateLost" id="dateLost" class="formInput" values="{{data['dateLost']}}"></input><br>
+      <b>Date {{hidden}}: </b><input type="text" name="dateLost" id="dateLost" class="formInput" value="{{data['dateLost']}}"></input><br>
       <b>Color: </b><input type="text" name="color" id="color" class="formInput" value="{{data['color']}}"></input><br>
       <b>Eye Color: </b><input type="text" name="eyeColor" id="eyeColor" class="formInput" value="{{data['eyeColor']}}"></input><br>
-      <b>Type of Pet: </b><input type="text" name="petType" id="petType" class="formInput"></input><br>
+      <b>Species: </b><input type="text" name="petType" id="petType" class="formInput" value="{{data['petType']}}"></input><br>
       <hr>
       <p>Please add the following additional details</p>
       <b>Name: </b><input type="text" name="name" id="name" class="formInput" required></input><br>
