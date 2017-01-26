@@ -63,3 +63,4 @@ kevinZ -- 2017-01-26 06:10 AM
        Updated README
 aymanA - 2017-01-26 06:21:40 AM - file upload button, confirm done
 aymanA - 2017-01-26 07:27:12 AM - styles, home button, pet
+aymanA - 2017-01-26 07:50:30 AM - finished styles
