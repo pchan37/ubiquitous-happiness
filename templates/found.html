@@ -16,10 +16,10 @@
         </div>
         <div class="contentData">
             {% for d in data %}
-                <div class="dataObject">
+                <div class="dataObject cardDiv box-shadow">
                     <img src="{{d['img']}}" alt="IMAGE NOT FOUND" height="250px" width="250px">
                     <h3>Pet Information</h3>
-                    <ul>
+                    <ul class="cardList">
                         <li><b>Pet Name:</b>{{d['petName']}}</li>
                         <li><b>Type of Pet:</b>{{d['petType']}}</li>
                         <li><b>Color:</b>{{d['color']}}</li>
