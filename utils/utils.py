@@ -10,7 +10,7 @@ def processDatabaseResponse(response):
         result += '\t\t<li><b>Eye Color: </b>%s</li>\n' % petData['eyeColor']
         result += '\t\t<li><b>Date Found: </b>%s</li>\n' % petData['dateLost']
         result += '\t\t<li><b>Where: </b>%s</li>\n' % petData['location']
-        result += '<br><br>\n'
+        result += '<br>\n'
         result += '\t\t<li><a class="cardLink" href="/pet/%s">Sounds Like your Pet? </a></li>\n' % petData['petID']
         result += '\t</ul>\n'
         result += '</div>\n'
