@@ -2,19 +2,22 @@
 {% block title %}Lost A Pet{% endblock %}
 {% block content %}
     <div class="page-panel">
+        <a href="/" class="back-button"><i class="fa fa-arrow-left fa-4x"></i></a>
+        <h1 class="cover-heading-dark">Lost a Pet</h1><br>
+        <p style="text-align: center">Let us help you find your pet - this list updates as you enter information.</p><br><br>
         <div class="contentForm">
-            <p>Fill out form to narrow results</p>
             <form id="formData" action="/submitLost/" method="POST">
-                <b>Pet Name:</b><input type="text" name="petName" id="petName" class="formInput"></input><br>
-                <b>Where:</b><input type="text" name="location" id="location" class="formInput"></input><br>
-                <b>Date Lost:</b><input type="date" name="dateLost" id="dateLost" class="formInput"></input><br>
-                <b>Color:</b><input type="text" name="color" id="color" class="formInput"></input><br>
-                <b>Eye Color:</b><input type="text" name="eyeColor" id="eyeColor" class="formInput"></input><br>
-                <b>Type of Pet:</b><input type="text" name="petType" id="petType" class="formInput"></input><br>
+                <input type="text" name="petName" id="petName" placeholder="What is the name of your pet?" class="formInput"></input><br><br>
+                <input type="text" name="location" id="location" placeholder="Where did you last see your pet?" class="formInput"></input><br><br>
+                <input type="date" name="dateLost" id="dateLost" placeholder="What was the last date you saw your pet?" class="formInput"></input><br><br>
+                <input type="text" name="color" id="color" placeholder="What color is your pet?" class="formInput"></input><br><br>
+                <input type="text" name="eyeColor" id="eyeColor" placeholder="What is the eye color of your pet?" class="formInput"></input><br><br>
+                <input type="text" name="petType" id="petType" placeholder="What species is your pet?" class="formInput"></input><br><br>
                 <input type="submit" id="submitData" class="formInput"></input><br>
             </form>
         </div>
-        <div class="contentData row">
+        <div style="width: 50% ; text-align: center ; margin: 0 auto ; padding: 0"><hr></div>
+        <div class="contentData row" style="padding-top: 0">
             {% for d in data %}
                 <div class="dataObject cardDiv drop-shadow col-sm-3">
                     <!-- <img src="{{d['img']}}" alt="IMAGE NOT FOUND" height="250px" width="250px"> -->
