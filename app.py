@@ -100,7 +100,7 @@ def updateFound():
 @app.route("/submitFound/", methods=['POST'])
 def submitFound():
     formData = request.form
-    return render_template("confirm.html", data=formData, hidden="Found")
+    return render_template("confirm.html", data=formData, hidden="Found", back = "/found/")
 
 @app.route("/addFound/", methods=['POST'])
 def addFound():
@@ -159,7 +159,7 @@ def updateLost():
 @app.route("/submitLost/", methods=['POST'])
 def submitLost():
     formData = request.form
-    return render_template("confirm.html", data=formData, hidden="Lost")
+    return render_template("confirm.html", data=formData, hidden="Lost", back = "/lost/")
 
 @app.route("/addLost/", methods=['POST'])
 def addLost():
