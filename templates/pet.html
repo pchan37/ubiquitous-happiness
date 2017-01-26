@@ -83,11 +83,11 @@
      <!--
      <a href="/" class="cover-link-dark">Back to {{hidden}}</a>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-     <form action="/routeBack/">
-       <input class="cover-link-dark" type="submit" value="Back to Previous Page">
-       <input type="hidden" value="{{hidden}}">
-       <input type="hidden" id="hiddenForm">
-     </form>
+     {% if hidden == "Found" %}
+     <a href="/found/" class="cover-link-dark">Back to Previous Page</a>
+     {% else %}
+     <a href="/lost/" class="cover-link-dark">Back to Previous Page</a>
+     {% endif %}
      <a href="/" class="cover-link-dark">Back to Home</a>
      <!-->
      <script>
