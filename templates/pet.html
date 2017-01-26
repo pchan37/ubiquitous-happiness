@@ -24,7 +24,7 @@
       <!-- LEFT SIDE -->
 	    <div class="col-md-9">
       <div style="height: 3em"></div>
-
+      
       {% if data['petName'] != "" %}
 		    <h2>{{data['petName']}}'s Information</h2>
       {% else %}
@@ -88,9 +88,16 @@
 	  <div class="col-md-3 vertical_divider">
         <div style="height: 3em"></div>
 	      <h3> Contact Info </h3> <br>
-          Name: {{founderName}}{{ownerName}}<br>
-	      Email: {{founderEmail}}{{ownerEmail}}
-          
+          Name: {% if hidden == "Found" %}
+          {{data['founderName']}}
+          {% else %}
+          {{data['ownerName']}}
+          {% endif %}<br>
+	      Email: {% if hidden == "Found" %}
+          {{data['founderEmail']}}
+          {% else %}
+          {{data['ownerEmail']}}
+          {% endif %}         
 	    </div>
 	  </div>
       

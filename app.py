@@ -37,6 +37,7 @@ def petInfo(petID):
         data = data[0]
         return render_template("pet.html", data = data, hidden = "Lost" )
     else:
+        data = data[0]
         return render_template("pet.html", data = data, hidden = "Found" )
 
 @app.route("/updateFound/", methods=['POST'])
