@@ -17,7 +17,7 @@ $('form :input').on('change input', function(){
 });
 
 var upload = function(){
-    var fileList = document.getElementById('fileUpload').files;
+    var fileList = document.getElementById('file-1').files;
     var formData = new FormData();
     formData.append("imgFile", fileList[0]);
     $.ajax({
@@ -33,7 +33,7 @@ var upload = function(){
     });
 };
 
-document.getElementById('fileUpload').onchange = function(event){
+document.getElementById('file-1').onchange = function(event){
     upload();
 };
 
