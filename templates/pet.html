@@ -18,100 +18,72 @@
 
 
     <body>
-
-  <div class="container">
-
-      <!-- LEFT SIDE -->
-      <div class="col-md-9">
-      <div style="height: 3em"></div>
-      
-      {% if data['petName'] != "" %}
-        <h2>{{data['petName']}}'s Information</h2>
-      {% else %}
-        <h2>Unnamed Pet Information</h2>
-      {% endif %}
-
-      <div style="height: 1em"></div>
-
-      {% if data['description'] != "" %}
-        {{data['description']}} <br> <br>
-      {% endif %}
-
-      pic goes here 
-        {% if data['img'] != "" %}
-      <b>Picture: </b><br><img url="{{data['img']}}"> <br>
-        {% endif %}
-      <div style="height: 1em"></div>
-
-        <table>
-
-            <colgroup>
-            <col style="width:20%">
-            <col style="width:80%">
-          </colgroup>  
-
-        {% if data['location'] != "" %}
-         <tr>
-          <td><b>Location</b></td>
-          <td> {{data['location']}} <br> </td>
-        </tr>
-        {% endif %}
-
-        {% if data['petType'] != "" %}
-         <tr>
-          <td> <b>Species</b></td>
-          <td> {{data['petType']}} <br> </td>
-        </tr>
-        {% endif %}
-
-        {% if data['color'] != "" %}
-         <tr>
-          <td><b>Color</b> </td>
-          <td> {{data['color']}} <br> </td>
-        </tr>
-        {% endif %}
-
-        {% if data['eyeColor'] != "" %}
-         <tr>
-          <td><b>Eye Color </b></td>
-          <td> {{data['eyeColor']}} <br> </td>
-        </tr>
-        {% endif %}
-    
-      </table>
-     <div style="height: 4em"></div>
-     <!--
-     <a href="/" class="cover-link-dark">Back to {{hidden}}</a>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-     {% if hidden == "Found" %}
-     <a href="/lost/" class="cover-link-dark">Back to Previous Page</a>
-     {% else %}
-     <a href="/found/" class="cover-link-dark">Back to Previous Page</a>
-     {% endif %}
-     <a href="/" class="cover-link-dark">Back to Home</a>
-     
-      </div>
-
-      <!-- RIGHT SIDE -->
-    <div class="col-md-3 vertical_divider">
-        <div style="height: 3em"></div>
-        <h3> Contact Info </h3> <br>
-          Name: {% if hidden == "Found" %}
+	{% if hidden == "Found" %}
+		<a href="/lost/" class="back-button"><i class="fa fa-arrow-left fa-4x"></i></a>
+ 	{% else %}
+ 		<a href="/found/" class="back-button"><i class="fa fa-arrow-left fa-4x"></i></a>
+ 	{% endif %}
+ 	<a href="/" class="home-button"><i class="fa fa-home fa-4x"></i></a>
+  	<div class="row" style="padding-top: 7.5% ; padding-left: 5% ; padding-right: 5%">
+		<div class="col-sm-8">
+			{% if data['petName'] != "" %}
+        		<h1 class="cover-heading-dark" style="font-size: 4em; text-align: left ; margin-top: 0 ; font-weight: 300">{{data['petName']}}
+      		{% else %}
+        		<h1 class="cover-heading-dark" style="font-size: 4em; text-align: left ; margin-top: 0 ; font-weight: 300">Unnamed Pet
+      		{% endif %}
+      		{% if data['petType'] != "" %}
+      		, {{data['petType']}}
+      		{% endif %}
+      		</h1>
+      		<div class="pet-info">
+      		<br>
+      		<p>
+      		{% if data['description'] != "" %}
+    			<h1 class="cover-heading-dark" style="font-size: 2em ; text-align: left ; padding: 0 ; margin: 0 ; font-weight: 300">{{data['description']}}</h1>
+      		{% endif %}
+      		</p>
+      		<br>
+      		<p>
+			{% if data['location'] != "" %}
+			<b>Location: </b>{{data['location']}}<br>
+			{% endif %}
+			</p>
+			<br>
+			<p>
+			{% if data['color'] != "" %}
+			<b>Color: </b>{{data['color']}}<br>
+			{% endif %}
+			</p>
+			<br>
+			<p>
+			{% if data['eyeColor'] != "" %}
+			<b>Eye Color: </b>{{data['eyeColor']}}<br>
+			{% endif %}
+			</p>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<img class="pet-img" alt="IMAGE NOT FOUND" onerror="this.onerror=null;this.src='../static/images/placeholder.png';" src="{{data['img']}}">
+		</div>
+	</div>
+	<div class="form-hr"><hr></div>
+	<div class="col-sm-12" style="text-align: center">
+		<h1 class="cover-heading-dark" style="font-size: 4em ; margin-top: 0 ; font-weight: 300">Contact Information</h1>
+		<b>Name: </b>
+		{% if hidden == "Found" %}
           {{data['founderName']}}
           {% else %}
           {{data['ownerName']}}
           {% endif %}<br>
-        Email: {% if hidden == "Found" %}
+        <b>Email: </b>{% if hidden == "Found" %}
           {{data['founderEmail']}}
           {% else %}
           {{data['ownerEmail']}}
-        {% endif %}
-        <textarea id="holdtext" style="display:none"></textarea>
-        <button id="claim" class="cover-link-dark" onClick="ClipBoard();">Claim Pet</button>
+        {% endif %}<br>
+        <p style="display: none" id="email"></p>
+        <button type="button" id="email-button" title="Copy Email to Clipboard" onclick="copyToClipboard('#email')" class="cardLink-reverse">Claim Pet</button>
     </div>
     
-    </div>
-      
     <!-- Jquery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <!-- Bootstrap -->
@@ -119,6 +91,13 @@
   <!-- Bootstrap Notify -->
   <script src="../static/bootstrap-notify/js/bootstrap-notify.js"></script>
   <script language="JavaScript">
+    function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
     var clipboard = function(){
     if( {{hidden}} == "Found" ){
     var postData = {};

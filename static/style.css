@@ -204,8 +204,18 @@ tr:hover {background-color: #f5f5f5}
 	text-decoration: none;
 }
 
+.home-button {
+	position: absolute;
+	right: 1%;
+	top: 1.5%;
+	color: #3C4858;
+	text-decoration: none;
+}
+
 @media screen and (max-width: 768px) {
 	.back-button {
+		padding-top: 1.5%;
+		padding-left: 1%;
 		position: static;
 	}
 	.cover-heading-dark {
@@ -340,9 +350,40 @@ tr:hover {background-color: #f5f5f5}
     transition: background-color 300ms linear;
 }
 
+.cardLink-reverse {
+	width: 25%;
+	height: 2.75em !important;
+	max-height: 3em;
+	border: 2px solid transparent;
+	font-size: 1.25em;
+	border-radius: 25px;
+	margin: 2.5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 3%;
+	padding-right: 3%;
+	text-decoration: none !important;
+	background-color: #FFF;
+	color: #3C4858;
+	border: 2px solid #3C4858;
+	text-align: center;
+}
+
+.cardLink-reverse:hover {
+	color: #FFF;
+	transition: 0.3s color;
+	background-color: #3C4858;
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+}
+
 @media screen and (max-width: 768px) {
 	#submitData {
 		width: 50%;
+	}
+	.cardLink-reverse {
+		width: 75%;
 	}
 }
 
@@ -492,8 +533,21 @@ tr:hover {background-color: #f5f5f5}
     background-color: rgba(60, 72, 87, 0.75);
 }
 
-.pet-info {
-	list-style-type: none;
+.pet-info > p {
+	font-family: 'Source Sans Pro';
+	font-size: 1.25em;
+	font-weight: 300;
+}
+
+.pet-info > p > b {
+	font-family: 'Source Sans Pro';
+	color: #3C4858;
+	font-weight: 700;
+}
+
+.pet-img {
+	width: 100%;
+	height: auto;
 }
 
 .drop-shadow {
