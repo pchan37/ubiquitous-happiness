@@ -59,3 +59,5 @@ aymanA - 2017-01-26 04:29:52 AM - finished found and lost.html
 aymanA - 2017-01-26 05:07:20 AM - fixed form responsive click, work on confirm done
 aymanA - 2017-01-26 05:15:27 AM - done with confirm, more styles
 aymanA - 2017-01-26 05:34:15 AM - added splice to found/lost, not working yet
+kevinZ -- 2017-01-26 06:10 AM
+       Updated README
