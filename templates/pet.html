@@ -83,8 +83,28 @@
      <!--
      <a href="/" class="cover-link-dark">Back to {{hidden}}</a>
      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+     <form action="/routeBack/">
+       <input class="cover-link-dark" type="submit" value="Back to Previous Page">
+       <input type="hidden" value="{{hidden}}">
+       <input type="hidden" id="hiddenForm">
+     </form>
      <a href="/" class="cover-link-dark">Back to Home</a>
+     <!-->
+     <script>
+       var action = function(){
+       var data = { };
+       data['petName'] = {{hiddenForm['petName']}};
+       data['location'] = {{hiddenForm['location']}};
+       data['dateLost'] = {{hiddenForm['dateLost']}};
+       data['color'] = {{hiddenForm['color']}};
+       data['eyeColor'] = {{hiddenForm['eyeColor']}};
+       data['petType'] = {{hiddenForm['petType']}};
 
+       document.getElementById('hiddenForm').value = JSON.stringfy(data);
+       }
+     </script>
+
+     -->
       </div>
 
       <!-- RIGHT SIDE -->

@@ -40,6 +40,11 @@ def petInfo(petID):
         data = data[0]
         return render_template("pet.html", data = data, hidden = "Found" )
 
+@app.route("/routeBack/")
+def routeBack():
+    data = request.form
+    return data
+    
 @app.route("/updateFound/", methods=['POST'])
 def updateFound():
     formDataArray = loads(request.form.get('formData'))
