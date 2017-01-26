@@ -1,9 +1,15 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for
 from json import loads
+from werkzeug.utils import secure_filename
 from utils.utils import convertFormArrayToDict, processDatabaseResponse
 from utils.Database import Database
 
+UPLOAD_FOLDER = "static/images/stored/"
+ALLOWED_EXTENSIONS = set(['jpg', 'png', 'jpeg'])
+
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 #this one will have notifications and such via javascript
 @app.route("/")
@@ -44,6 +50,19 @@ def petInfo(petID):
 def routeBack():
     data = request.form
     return data
+
+@app.route("/uploadImage/", methods=['POST'])
+def uploadImage():
+    file = request.files['imgFile']
+    if file and allowed_file(file.filename):
+        filename = secure_filename("%d.%s"%(db.generateNextPetID(), file.filename.rsplit('.',1)[1].lower()))
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        return UPLOAD_FOLDER + filename
+    else:
+        return ""
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
     
 @app.route("/updateFound/", methods=['POST'])
 def updateFound():
