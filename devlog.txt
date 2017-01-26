@@ -49,4 +49,4 @@ kevinZ -- 2017-01-26 12:21 AM
        Finished the found a pet and lost a pet routes.
        Added confirm.js
        Got pet.html to display properly
-       
+aymanA - 2017-01-26 12:56:50 AM - added cards styling for lost.html / found.html
