@@ -34,16 +34,10 @@ def petInfo(petID):
     data = db.pullFoundData("WHERE Pets.petID = ? AND Pets.petID = ListOfPetsFound.petID", [petID])
     if not data:
         data = db.pullLostData("WHERE Pets.petID = ? AND Pets.petID = ListOfPetsLost.petID", [petID])
-    if data:
-        data = data[0];
-        if 'founderName' in data:            
-            return render_template("pet.html", data = data, hidden = "Found" )
-        elif 'ownerName' in data:
-            return render_template("pet.html", data = data, hidden = "Lost" )
-        else:
-            return "done fucked"
+        data = data[0]
+        return render_template("pet.html", data = data, hidden = "Lost" )
     else:
-        return "petID not on record"
+        return render_template("pet.html", data = data, hidden = "Found" )
 
 @app.route("/updateFound/", methods=['POST'])
 def updateFound():
@@ -136,7 +130,33 @@ def updateLost():
         substitutionSequence.append('%' + formDataDictionary['dateLost'] + '%')
     data = db.pullFoundData(dbCommand, substitutionSequence)
     return processDatabaseResponse(data)
-    
+
+@app.route("/submitLost/", methods=['POST'])
+def submitLost():
+    formData = request.form
+    return render_template("confirm.html", data=formData, hidden="Lost")
+
+@app.route("/addLost/", methods=['POST'])
+def addLost():
+    formData = request.form
+    petData = {}
+    petData['petName'] = formData['petName']
+    petData['location'] = formData['location']
+    petData['dateLost'] = formData['dateLost']
+    petData['color'] = formData['color']
+    petData['eyeColor'] = formData['eyeColor']
+    petData['petType'] = formData['petType']
+    petData['img'] = formData['imgURL']
+    petData['description'] = formData['description']
+    global petCount;
+    petData['petID'] = db.generateNextPetID()
+    userInfo = {}
+    userInfo['ownerEmail'] = formData['email']
+    userInfo['ownerName'] = formData['name']
+    db.addPet( petData, userInfo )
+    return redirect(url_for("home", message="Success!" ) )
+
+
 @app.route("/remove/")
 def remove():
     global db
