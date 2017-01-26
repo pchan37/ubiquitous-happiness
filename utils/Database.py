@@ -71,17 +71,17 @@ class Database:
         petData is a dictionary with non-empty fields (fill with "" if necessary)
         Assume that petID is pre-generated
         '''
-        dbCommand = "INSERT INTO Pets VALUES (%d, \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\")"%(petData['petID'], petData['location'], petData['petType'], petData['color'], petData['eyeColor'], petData['img'], petData['description'], petData['dateLost'], petData['petName'])
+        dbCommand = "INSERT INTO Pets VALUES (%d, \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\");"%(petData['petID'], petData['location'], petData['petType'], petData['color'], petData['eyeColor'], petData['img'], petData['description'], petData['dateLost'], petData['petName'])
         self.cursor.execute(dbCommand)
         if 'ownerEmail' in userInfo:
-            dbCommand = "INSERT INTO ListOfPetsLost VALUES (%d, \"%s\", \"%s\")"%(petData['petID'], userInfo['ownerName'], userInfo['ownerEmail'])
+            dbCommand = "INSERT INTO ListOfPetsLost VALUES (%d, \"%s\", \"%s\");"%(petData['petID'], userInfo['ownerName'], userInfo['ownerEmail'])
             self.cursor.execute(dbCommand)
         elif 'founderEmail' in userInfo:
-            dbCommand = "INSERT INTO ListOfPetsFound VALUES (%d, \"%s\", \"%s\")"%(petData['petID'], userInfo['founderName'], userInfo['founderEmail'])
+            dbCommand = "INSERT INTO ListOfPetsFound VALUES (%d, \"%s\", \"%s\");"%(petData['petID'], userInfo['founderName'], userInfo['founderEmail'])
             self.cursor.execute(dbCommand)
         self.db.commit()
 
     def removePet( self, petID ):
-        dbCommand = "DELETE * FROM Pets, ListOfPetsLost, ListOfPetsFound WHERE petID = %d" % (petID)
+        dbCommand = "DELETE * FROM Pets, ListOfPetsLost, ListOfPetsFound WHERE petID = %d;" % (petID)
         self.cursor.execute(dbCommand)
         self.db.commit()
