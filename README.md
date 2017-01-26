@@ -22,7 +22,6 @@
 Known Bugs:
 
 - Going back from ```/pet/``` to ```/lost/``` or ```/found/``` clears out the previous form
-- Currently, the claimPet button does not work as intended. The email is not being copied to clipboard, and the pet is not getting removed from the database.
 
 Changes to Design:
 
