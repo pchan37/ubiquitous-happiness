@@ -4,7 +4,6 @@ from utils.utils import convertFormArrayToDict, processDatabaseResponse
 from utils.Database import Database
 
 app = Flask(__name__)
-petCount = 0
 
 #this one will have notifications and such via javascript
 @app.route("/")
@@ -12,15 +11,13 @@ def home(message=None):
     global db
     if not db:
         db = Database()
-    global petCount
-    petCount = db.countPets()
     return render_template("home.html", message=message)
 
 @app.route("/found/")
 def found():
     if not db:
         return redirect(url_for('home'))
-    data = db.pullFoundData("WHERE Pets.petID = ListOfPetsFound.petID")
+    data = db.pullLostData("WHERE Pets.petID = ListOfPetsLost.petID")
     return render_template("found.html", data = data)
 
 @app.route("/lost/")
@@ -39,7 +36,7 @@ def petInfo(petID):
         data = db.pullLostData("WHERE Pets.petID = ? AND Pets.petID = ListOfPetsLost.petID", [petID])
     if data:
         data = data[0];
-        return render_template("pet.html", data=data)
+        return render_template("pet.html", data = data)
     else:
         return "petID not on record"
 
@@ -47,7 +44,7 @@ def petInfo(petID):
 def updateFound():
     formDataArray = loads(request.form.get('formData'))
     formDataDictionary = convertFormArrayToDict(formDataArray)
-    dbCommand = "WHERE Pets.petID = ListOfPetsFound.petID"
+    dbCommand = "WHERE Pets.petID = ListOfPetsLost.petID"
     substitutionSequence = []
     if formDataDictionary.get('petName'):
         dbCommand += " AND (Pets.petName LIKE ? OR Pets.petName LIKE '')"
@@ -73,7 +70,7 @@ def updateFound():
     if formDataDictionary.get('dateLost'):
         dbCommand += " AND (Pets.dateLost LIKE ? OR Pets.dateLost LIKE '')"
         substitutionSequence.append('%' + formDataDictionary['dateLost'] + '%')
-    data = db.pullFoundData(dbCommand, substitutionSequence)
+    data = db.pullLostData(dbCommand, substitutionSequence)
     return processDatabaseResponse(data)
 
 @app.route("/submitFound/", methods=['POST'])
@@ -94,8 +91,7 @@ def addFound():
     petData['img'] = formData['imgURL']
     petData['description'] = formData['description']
     global petCount;
-    petData['petID'] = petCount+1;
-    petCount += 1;
+    petData['petID'] = db.generateNextPetID()
     userInfo = {}
     userInfo['founderEmail'] = formData['email']
     db.addPet( petData, userInfo )
