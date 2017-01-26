@@ -16,33 +16,24 @@ $('form :input').on('change input', function(){
     checker();
 });
 
-
-
-$(document).ready( function() {
-        $(document).on('change', '.btn-file :file', function() {
-        var input = $(this),
-            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-        input.trigger('fileselect', [label]);
-        });
-        $('.btn-file :file').on('fileselect', function(event, label) {
-            var input = $(this).parents('.input-group').find(':text'),
-                log = label; 
-            if( input.length ) {
-                input.val(log);
-            } else {
-                if( log ) alert(log);
-            }
-        });
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#img-upload').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
+var upload = function(){
+    var fileList = document.getElementById('fileUpload').files;
+    var formData = new FormData();
+    formData.append("imgFile", fileList[0]);
+    $.ajax({
+        url: '/uploadImage/',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success : function(response){
+            console.log(response);
+            document.getElementById('imgURL').value = response;
         }
-        $("#imgInp").change(function(){
-            readURL(this);
-        });     
     });
+};
+
+document.getElementById('fileUpload').onchange = function(event){
+    upload();
+};
+

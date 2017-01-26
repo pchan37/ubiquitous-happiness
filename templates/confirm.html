@@ -4,7 +4,7 @@
 <div class="page-panel">
   <div class="contentForm">
     <p>Modify the original form to meet your specifications</p>
-    <form id="formData" action="/add{{hidden}}/" method="POST">
+    <form id="formData" action="/add{{hidden}}/" method="POST" enctype=multipart/form-data>
       <b>Pet Name: </b><input type="text" name="petName" id="petName" value="{{data['petName']}}" class="formInput"></input><br>
       <b>Where: </b><input type="text" name="location" id="location" class="formInput" value="{{data['location']}}"></input><br>
       <b>Date {{hidden}}: </b><input type="date" name="dateLost" id="dateLost" class="formInput" values="{{data['dateLost']}}"></input><br>
@@ -17,24 +17,7 @@
       <b>Email: </b><input type="text" name="email" id="email" class="formInput" required></input><br>
       <b>Confirm Email: </b><input type="text" name="confirmEmail" id="confirmEmail" class="formInput" required></input><br>
       <b>Additional Description: </b><input type="text" name="description" id="description" class="formInput"></input><br>
-      <!--<b>Upload Image</b>-->
-      <div class="container">
-      <div class="form-group">
-          <label>Upload Image</label>
-          <div class="input-group">
-              <span class="input-group-btn">
-                  <span class="btn btn-default btn-file">
-                      Browse… <input type="file" id="imgInp">
-                  </span>
-              </span>
-              <input type="text" class="form-control" readonly>
-          </div>
-          <img id='img-upload'/>
-        </div>
-      </div>
-
-
-
+      <b>Upload Image :</b><input type="file" name="fileUpload" id="fileUpload">
       <input type="hidden" value="" name="imgURL" id="imgURL"></input><br>
       <input type="submit" id="submitData" class="formInput"></input><br>
     </form>
