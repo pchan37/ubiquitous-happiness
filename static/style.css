@@ -314,17 +314,16 @@ tr:hover {background-color: #f5f5f5}
 	padding-left: 3%;
 	padding-right: 3%;
 	text-decoration: none !important;
-	background-color: #3C4858;
-	color: #FFFFFF;
+	background-color: #FFF;
+	color: #3C4858;
+	border: 2px solid #3C4858;
 	text-align: center;
 }
 
 #submitData:hover {
-	transition: 0.3s border;
-	border: 2px solid #3C4858;
+	color: #FFF;
 	transition: 0.3s color;
-	color: #3C4858;
-	background-color: #FFF;
+	background-color: #3C4858;
     -webkit-transition: background-color 300ms linear;
     -ms-transition: background-color 300ms linear;
     transition: background-color 300ms linear;
