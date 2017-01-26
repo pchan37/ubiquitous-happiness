@@ -20,7 +20,7 @@
         <div class="contentData row" style="padding-top: 0">
             {% for d in data %}
                 <div class="dataObject cardDiv drop-shadow col-sm-3">
-                    <img class="cardImage" src="{{d['img']}}" alt="IMAGE NOT FOUND" onerror="this.onerror=null;this.src='../static/images/placeholder.png';">
+                    <img class="cardImage" src="../{{d['img']}}" alt="IMAGE NOT FOUND" onerror="this.onerror=null;this.src='../static/images/placeholder.png';">
                     <ul class="cardList">
                         <li><b>Pet Name: </b>{{d['petName']}}</li>
                         <li><b>Type of Pet: </b>{{d['petType']}}</li>

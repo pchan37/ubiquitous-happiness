@@ -2,7 +2,7 @@ def processDatabaseResponse(response):
     result = ""
     for petData in response:
         result += '<div class="dataObject cardDiv drop-shadow col-sm-3">\n'
-        result += '\t<img class="cardImage" src="%s" alt="IMAGE NOT FOUND" onerror="this.onerror=null;this.src=\'../static/images/placeholder.png\';">\n' % petData['img']
+        result += '\t<img class="cardImage" src="../%s" alt="IMAGE NOT FOUND" onerror="this.onerror=null;this.src=\'../static/images/placeholder.png\';">\n' % petData['img']
         result += '\t<ul class="cardList">\n'
         result += '\t\t<li><b>Pet Name: </b>%s</li>\n' % petData['petName']
         result += '\t\t<li><b>Type of Pet: </b>%s</li>\n' % petData['petType']
