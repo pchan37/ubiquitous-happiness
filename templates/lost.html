@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Found A Pet{% endblock %}
+{% block title %}Lost A Pet{% endblock %}
 {% block content %}
     <div class="page-panel">
         <div class="contentForm">
@@ -18,7 +18,7 @@
             {% for d in data %}
                 <div class="dataObject cardDiv drop-shadow col-sm-3">
                     <!-- <img src="{{d['img']}}" alt="IMAGE NOT FOUND" height="250px" width="250px"> -->
-                    <img class="cardImage" src="http://static.boredpanda.com/blog/wp-content/uploads/2016/06/gorilla-shot-boy-zookeper-explains-harambe-amanda-odonoughue-cincinnati-zoo-1.jpg" alt="IMAGE NOT FOUND">
+                    <img class="cardImage" src="http://static.boredpanda.com/blog/wp-content/uploads/2016/06/gorilla-shot-boy-zookeper-explains-harambe-amanda-odonoughue-cincinnati-zoo-1.jpg" alt="IMAGE NOT FOUND" onerror="this.onerror=null;this.src='../static/images/placeholder.png';">
                     <ul class="cardList">
                         <li><b>Name: </b>{{d['petName']}}</li>
                         <li><b>Type: </b>{{d['petType']}}</li>
@@ -26,6 +26,7 @@
                         <li><b>Eyes: </b>{{d['eyeColor']}}</li>
                         <li><b>Date Found: </b>{{d['dateLost']}}</li>
                         <li><b>Location: </b>{{d['location']}}</li>
+                        <br>
                         <li><a class="cardLink" href="/pet/{{d['petID']}}">Sounds Like your Pet?</a></li>
                     </ul>
                 </div>

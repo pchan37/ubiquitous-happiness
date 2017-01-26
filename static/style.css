@@ -209,9 +209,9 @@ tr:hover {background-color: #f5f5f5}
 }
 
 .cover-link-dark:hover {
-	background-color: black;
+	background-color: rgba(0, 0, 0, 0.4);
 	color: white;
-	transition: 0.2s background-color;
+	transition: 0.3s background-color;
 }
 
 .contentData {
@@ -240,12 +240,48 @@ tr:hover {background-color: #f5f5f5}
 .cardList {
 	text-align: justify;
 	padding-top: 7.5%;
+	padding-left: 2.5%;
+	padding-right: 2.5%;
 	padding-bottom: 7.5%;
 	list-style-type: none;
 }
 
+.cardList > li {
+	font-family: 'Source Sans Pro';
+	font-weight: 300;
+	text-align: center;
+}
+
+.cardList > li > b {
+	font-family: 'Source Sans Pro';
+	font-weight: bold;
+	color: #3C4858;
+}
+
 .cardLink {
-	
+	border: 2px solid transparent;
+	font-size: 1.25em;
+	border-radius: 25px;
+	margin: 5%;
+	padding-top: 4%;
+	padding-bottom: 4%;
+	padding-left: 7.5%;
+	padding-right: 7.5%;
+	text-decoration: none !important;
+	background-color: #3C4858;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.cardLink:hover {
+	transition: 0.3s border;
+	border: 2px solid #3C4858;
+	transition: 0.3s color;
+	color: #3C4858;
+	background-color: #FFF;
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
 }
 
 .pet-info {
