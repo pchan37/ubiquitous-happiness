@@ -5,7 +5,7 @@ var update = function(){
     //var input = document.getElementById(formData);
     var str = $( "form" ).serializeArray();
     $.post("/updateFound/", {formData: JSON.stringify(str)}, function(response){
-        console.log(response);
+        //console.log(response);
         var formContent = document.getElementsByClassName('contentData');
         formContent[0].innerHTML = response;
             
@@ -15,7 +15,7 @@ var update = function(){
 
 var checkSubmission = function(){
     var contentData = document.getElementsByClassName('dataObject');
-    console.log(contentData);
+    //console.log(contentData);
     if( contentData.length < 5){
         $('#submitData').removeAttr('disabled');
     }else{

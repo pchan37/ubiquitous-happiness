@@ -17,7 +17,25 @@
       <b>Email: </b><input type="text" name="email" id="email" class="formInput" required></input><br>
       <b>Confirm Email: </b><input type="text" name="confirmEmail" id="confirmEmail" class="formInput" required></input><br>
       <b>Additional Description: </b><input type="text" name="description" id="description" class="formInput"></input><br>
-      <b>Upload Image</b><!-- Put Image Upload Here --><input type="hidden" value="" name="imgURL" id="imgURL"></input><br>
+      <!--<b>Upload Image</b>-->
+      <div class="container">
+      <div class="form-group">
+          <label>Upload Image</label>
+          <div class="input-group">
+              <span class="input-group-btn">
+                  <span class="btn btn-default btn-file">
+                      Browse… <input type="file" id="imgInp">
+                  </span>
+              </span>
+              <input type="text" class="form-control" readonly>
+          </div>
+          <img id='img-upload'/>
+        </div>
+      </div>
+
+
+
+      <input type="hidden" value="" name="imgURL" id="imgURL"></input><br>
       <input type="submit" id="submitData" class="formInput"></input><br>
     </form>
   </div>
