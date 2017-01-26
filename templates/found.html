@@ -17,21 +17,25 @@
             </form>
         </div>
         <div class="form-hr"><hr></div>
-        <div class="contentData row" style="padding-top: 0">
-            {% for d in data %}
-                <div class="dataObject cardDiv drop-shadow col-sm-3">
-                    <img class="cardImage" src="../{{d['img']}}" alt="IMAGE NOT FOUND" onerror="this.onerror=null;this.src='../static/images/placeholder.png';">
-                    <ul class="cardList">
-                        <li><b>Pet Name: </b>{{d['petName']}}</li>
-                        <li><b>Type of Pet: </b>{{d['petType']}}</li>
-                        <li><b>Color: </b>{{d['color']}}</li>
-                        <li><b>Eye Color: </b>{{d['eyeColor']}}</li>
-                        <li><b>Date Found: </b>{{d['dateLost']}}</li>
-                        <li><b>Where: </b>{{d['location']}}</li><br>
-                        <li><a class="cardLink" href="/pet/{{d['petID']}}">Sounds Like your Pet?</a></li>
-                    </ul>
+        <div class="contentData" style="padding-top: 0">
+            {% for d in data|slice(2) %}
+                <div class="row">
+                {% for item in d %}
+                    <div class="dataObject cardDiv drop-shadow col-sm-3">
+                        <img class="cardImage" src="../{{item['img']}}" alt="IMAGE NOT FOUND" onerror="this.onerror=null;this.src='../static/images/placeholder.png';">
+                        <ul class="cardList">
+                            <li><b>Pet Name: </b>{{item['petName']}}</li>
+                            <li><b>Type of Pet: </b>{{item['petType']}}</li>
+                            <li><b>Color: </b>{{item['color']}}</li>
+                            <li><b>Eye Color: </b>{{item['eyeColor']}}</li>
+                            <li><b>Date Found: </b>{{item['dateLost']}}</li>
+                            <li><b>Where: </b>{{item['location']}}</li><br>
+                            <li><a class="cardLink" href="/pet/{{item['petID']}}">Sounds Like your Pet?</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-1"></div>
+                {% endfor %}
                 </div>
-                <div class="col-sm-1"></div>
             {% endfor %}
         </div>
     </div>
